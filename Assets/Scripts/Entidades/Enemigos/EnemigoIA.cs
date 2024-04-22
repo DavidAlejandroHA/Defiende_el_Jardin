@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class EnemigoIA : MonoBehaviour
 {
     // Navmesh
-    NavMeshAgent agente;
+    private NavMeshAgent _agente;
     public Transform destino;
 
     //Vida
@@ -21,6 +21,13 @@ public class EnemigoIA : MonoBehaviour
     [SerializeField] GameObject barraDeVidaObj;
     BarraVida barraDeVida;
 
+    //Condiciones
+    bool destinoCompletado;
+
+    //Valores parámetros
+    public float distanciaAParar;
+    public float distanciaDespawn;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -29,10 +36,11 @@ public class EnemigoIA : MonoBehaviour
 
     public void Start()
     {
-        agente = GetComponent<NavMeshAgent>();
-        agente.destination = destino.position;
+        _agente = GetComponent<NavMeshAgent>();
+        _agente.destination = destino.position;
         vidaMax = vida;
-        
+        destinoCompletado = false;
+
         barraDeVida = barraDeVidaObj.GetComponent<BarraVida>();
         barraDeVida.actualizarBarraDeVida(vida, vidaMax); // para asegurar que se actualiza
         // como es debido al volver a empezar
@@ -50,9 +58,9 @@ public class EnemigoIA : MonoBehaviour
 
     void morir()
     {
-        GameManager.Instance.aniadirDinero(dineroADevolver);
+        /*GameManager.Instance.aniadirDinero(dineroADevolver);
         GameManager.Instance.aniadirPuntos(dineroADevolver);
-        GameManager.Instance.aniadirMuertes();
+        GameManager.Instance.aniadirMuertes();*/
         Destroy(this.gameObject);
     }
 
@@ -62,13 +70,25 @@ public class EnemigoIA : MonoBehaviour
         /*if (agente.pathStatus != NavMeshPathStatus.PathComplete)
             Debug.Log("a");*/
         checkPathComplete();
+        //Debug.Log(Vector3.Distance(transform.position, destino.transform.position));
+        if (destinoCompletado && Vector3.Distance(transform.position, destino.transform.position) > distanciaDespawn)
+        {
+            morir();
+        }
     }
 
     private void checkPathComplete()
     {
-        if (!agente.pathPending && agente.remainingDistance < 0.01f)
+        if (!destinoCompletado && !_agente.pathPending && _agente.remainingDistance < distanciaAParar)
         {
             //Debug.Log("a");
+            destinoCompletado = true;
+            Vector3 dirToPlayer = transform.position - destino.transform.position;
+            Vector3 newPos = transform.position + dirToPlayer;
+            newPos = newPos * 3;
+            newPos = new Vector3(newPos.x, destino.transform.position.y ,newPos.z);
+            _agente.SetDestination(newPos);
+
         }
     }
 

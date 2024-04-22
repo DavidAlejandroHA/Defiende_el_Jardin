@@ -106,4 +106,16 @@ public class GameManager : MonoBehaviour
     {
         //UIManager.Instance.mostrarPanelPerder();
     }
+
+    public Vector3 puntoAleatorioEnAnillo(Vector3 origen, float minRadio, float maxRadio)
+    {
+        Vector2 origen2D = new Vector2(origen.x, origen.z);
+        Vector2 randomDirection = (Random.insideUnitCircle).normalized;
+
+        float randomDistance = Random.Range(minRadio, maxRadio);
+
+        Vector2 point = origen2D + randomDirection * randomDistance;
+
+        return new Vector3(point.x, origen.y, point.y);
+    }
 }

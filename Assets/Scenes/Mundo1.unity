@@ -1267,7 +1267,8 @@ Transform:
   m_LocalPosition: {x: 5.8414445, y: -15.7913065, z: -5.5808854}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 659002023}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &36693650
@@ -5824,7 +5825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!64 &170713277
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5906,7 +5907,7 @@ Transform:
   m_GameObject: {fileID: 170713276}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20169,18 +20170,18 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 8
+  m_Acceleration: 16
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
-  m_Height: 1
+  m_Height: 2
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!114 &659002022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20197,6 +20198,8 @@ MonoBehaviour:
   vida: 100
   dineroADevolver: 2
   barraDeVidaObj: {fileID: 1119601384}
+  distanciaAParar: 2
+  distanciaDespawn: 20
 --- !u!4 &659002023
 Transform:
   m_ObjectHideFlags: 0
@@ -20205,14 +20208,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 659002020}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.05, y: 2.03, z: -28.94}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -18.8, y: 17.821306, z: -8.34}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1686496273}
   - {fileID: 1608202772}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 36371898}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &659002024
 CapsuleCollider:
@@ -60537,7 +60540,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1991946713
 Transform:
   m_ObjectHideFlags: 0
@@ -64605,5 +64608,4 @@ SceneRoots:
   - {fileID: 84758494}
   - {fileID: 36371898}
   - {fileID: 589049526}
-  - {fileID: 659002023}
   - {fileID: 183415764}
