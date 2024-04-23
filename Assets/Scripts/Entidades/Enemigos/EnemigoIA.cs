@@ -71,6 +71,11 @@ public class EnemigoIA : MonoBehaviour
             Debug.Log("a");*/
         checkPathComplete();
         //Debug.Log(Vector3.Distance(transform.position, destino.transform.position));
+        checkMissionCompleted();
+    }
+
+    private void checkMissionCompleted()
+    {
         if (destinoCompletado && Vector3.Distance(transform.position, destino.transform.position) > distanciaDespawn)
         {
             morir();
@@ -91,6 +96,11 @@ public class EnemigoIA : MonoBehaviour
 
         }
     }
+
+    /*public NavMeshAgent getAgente()
+    {
+        return _agente;
+    }*/
 
     public float getVidaMax()
     {
