@@ -22,7 +22,8 @@ public class EnemigoIA : MonoBehaviour
     BarraVida barraDeVida;
 
     //Condiciones
-    bool destinoCompletado;
+    public bool _destinoCompletado;
+    public bool test;
 
     //Valores parámetros
     public float distanciaAParar;
@@ -39,13 +40,14 @@ public class EnemigoIA : MonoBehaviour
         _agente = GetComponent<NavMeshAgent>();
         _agente.destination = destino.position;
         vidaMax = vida;
-        destinoCompletado = false;
+        _destinoCompletado = false;
 
         barraDeVida = barraDeVidaObj.GetComponent<BarraVida>();
         barraDeVida.actualizarBarraDeVida(vida, vidaMax); // para asegurar que se actualiza
         // como es debido al volver a empezar
     }
 
+    // 
     public void takeDamage(float damage)
     {
         vida -= damage;
@@ -67,43 +69,46 @@ public class EnemigoIA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if (agente.pathStatus != NavMeshPathStatus.PathComplete)
-            Debug.Log("a");*/
         checkPathComplete();
-        //Debug.Log(Vector3.Distance(transform.position, destino.transform.position));
         checkMissionCompleted();
     }
 
+    // Si el objetivo ha sido cumplido, hacer despawn tras haberse alejado de la granja
     private void checkMissionCompleted()
     {
-        if (destinoCompletado && Vector3.Distance(transform.position, destino.transform.position) > distanciaDespawn)
+        if (_destinoCompletado && Vector3.Distance(transform.position, destino.transform.position) > distanciaDespawn)
         {
             morir();
         }
     }
 
+    // Si se ha completado el destino principal, hacer que se marche y se aleje del mapa
     private void checkPathComplete()
     {
-        if (!destinoCompletado && !_agente.pathPending && _agente.remainingDistance < distanciaAParar)
+        if (!_destinoCompletado && !_agente.pathPending && _agente.remainingDistance < distanciaAParar)
         {
-            //Debug.Log("a");
-            destinoCompletado = true;
-            Vector3 dirToPlayer = transform.position - destino.transform.position;
-            Vector3 newPos = transform.position + dirToPlayer;
-            newPos = newPos * 3;
+            _destinoCompletado = true;
+            Vector3 dirToGoal = transform.position - destino.transform.position;
+            Vector3 newPos = transform.position + dirToGoal;
+            newPos = newPos * 4;
             newPos = new Vector3(newPos.x, destino.transform.position.y ,newPos.z);
             _agente.SetDestination(newPos);
 
         }
+        if (test)
+        {
+            Debug.Log("TEST : " + (_agente.remainingDistance < distanciaAParar) + _agente.pathPending);
+        }
+        
     }
-
-    /*public NavMeshAgent getAgente()
-    {
-        return _agente;
-    }*/
 
     public float getVidaMax()
     {
         return vidaMax;
+    }
+
+    public BarraVida getBarraDeVida()
+    {
+        return barraDeVida;
     }
 }

@@ -7,17 +7,32 @@ public class GnomoIA : MonoBehaviour
 {
     // Navmesh
     private NavMeshAgent _agente;
-    private Transform destino;
+    private float velocidad;
 
     // Variables
     public float radio;
+    public bool mostrarAreaDeAccion;
     public float danio;
     public float cooldown;
-    private float temporizador;
+    [SerializeField] private float temporizador;
+    
+
+    //Barra de Stamina
+    public float stamina;
+    private float _staminaMax;
+    public float rapidezRecuperacion;
+    public float gastoStamina;
+    [SerializeField] BarraVida barraDeStamina;
+
+
+    //Condiciones
+    bool agotado;
     bool puedeAtacar;
-    //Barra de municion
-    //[SerializeField] GameObject barraDeVidaObj;
-    //[SerializeField] BarraVida barraDeVida;
+    bool enHuerta;
+
+    //Objetos
+    public GameObject huerta;
+
     // Start is called before the first frame update
 
     int mascara = 1 << 6;
@@ -26,6 +41,10 @@ public class GnomoIA : MonoBehaviour
         _agente = GetComponent<NavMeshAgent>();
         puedeAtacar = true;
         temporizador = 0.1f;
+        stamina = 100f;
+        _staminaMax = stamina;
+        agotado = false;
+        velocidad = _agente.speed;
     }
 
     // Update is called once per frame
@@ -52,11 +71,21 @@ public class GnomoIA : MonoBehaviour
         // se obtiene el enemigo más cercano al gnomo
         Transform enemigoMasCercano = obtenerPosEnemigoMasCercano(listaChoques);
 
-        //Si hay enemigos en el radio de acción se va a perseguirlo
-        if (enemigoMasCercano != null)
+        //Si no está agotado y hay enemigos en el radio de acción se va a perseguirlo
+        if (!agotado)
+        {
+            if (enemigoMasCercano != null)
+            {
+                _agente.speed = velocidad;
+                _agente
+                    .SetDestination(enemigoMasCercano.GetComponent<EnemigoIA>().transform.position);
+            }
+        }
+        // Si está agotado se va a la huerta a reponer energías
+        else if (_agente.destination != huerta.transform.position)
         {
             _agente
-                .SetDestination(enemigoMasCercano.GetComponent<EnemigoIA>().transform.position);
+                    .SetDestination(huerta.transform.position);
         }
     }
 
@@ -109,18 +138,66 @@ public class GnomoIA : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = new Color(255, 192, 203); // Color rosa
-        Gizmos.DrawWireSphere(transform.position, radio);
-        //Gizmos.DrawRay(transform.position, transform.forward);
+        if (mostrarAreaDeAccion)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(transform.position, radio);
+            //Gizmos.DrawRay(transform.position, transform.forward);
+        }
     }
 
     private void OnCollisionStay(Collision collision)
     {
-        if (puedeAtacar && collision.gameObject.tag == "Enemigo")
+        
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Enemigo")
         {
-            collision.gameObject.GetComponent<EnemigoIA>().takeDamage(danio);
-            Debug.Log("aTAQUE");
-            puedeAtacar = false;
+            EnemigoIA enemigo = other.gameObject.GetComponent<EnemigoIA>();
+                if (!agotado && puedeAtacar)
+                {
+                    enemigo.takeDamage(danio);
+                    Debug.Log("aTAQUE");
+                    puedeAtacar = false;
+                }
+            stamina -= gastoStamina;
+            barraDeStamina.actualizarBarraDeVida(stamina, _staminaMax);
+
+            if (stamina <= 0)
+            {
+                agotado = true;
+                stamina = 0f;
+                _agente.speed = velocidad / 2;
+            }
+        }
+
+        if (other.gameObject.tag == "Huerta")
+        {
+            if (!enHuerta)
+            {
+                _agente.speed = _agente.speed / 4;
+            }
+            enHuerta = true;
+            
+            if (stamina < 100f)
+            {
+                stamina += rapidezRecuperacion;
+                barraDeStamina.actualizarBarraDeVida(stamina, _staminaMax);
+            }
+            else
+            {
+                agotado = false;
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Huerta")
+        {
+            enHuerta = false;
         }
     }
 }
