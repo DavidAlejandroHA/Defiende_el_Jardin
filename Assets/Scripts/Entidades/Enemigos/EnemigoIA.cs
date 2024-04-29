@@ -18,8 +18,7 @@ public class EnemigoIA : MonoBehaviour
     public float dineroADevolver;
 
     //Barra de vida
-    [SerializeField] GameObject barraDeVidaObj;
-    BarraVida barraDeVida;
+    [SerializeField] BarraVida barraDeVida;
 
     //Condiciones
     public bool _destinoCompletado;
@@ -40,10 +39,10 @@ public class EnemigoIA : MonoBehaviour
         _agente = GetComponent<NavMeshAgent>();
         _agente.destination = destino.position;
         vidaMax = vida;
+        barraDeVida.setVida(vida);
         _destinoCompletado = false;
-
-        barraDeVida = barraDeVidaObj.GetComponent<BarraVida>();
-        barraDeVida.actualizarBarraDeVida(vida, vidaMax); // para asegurar que se actualiza
+        //barraDeVida = barraDeVidaObj.GetComponent<BarraVida>();
+        //barraDeVida.actualizarBarraDeVida(vida, vidaMax); // para asegurar que se actualiza
         // como es debido al volver a empezar
     }
 

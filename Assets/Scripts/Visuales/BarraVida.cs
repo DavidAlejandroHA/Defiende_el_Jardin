@@ -13,7 +13,7 @@ public class BarraVida : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        vidaMax = entidad.GetComponent<EnemigoIA>().getVidaMax();
+        slider = this.GetComponent<Slider>();
     }
 
     // Update is called once per frame
@@ -23,9 +23,31 @@ public class BarraVida : MonoBehaviour
         transform.rotation = lookRotation;
     }
 
+    /* Actualiza la barra de vida dada la vida que se entrega en el método respecto a
+    la vida máxima ya definida*/
+    public void actualizarBarraDeVida(float vidaActual)
+    {
+        slider = this.GetComponent<Slider>();
+        actualizarBarraDeVida(vidaActual, vidaMax);
+    }
+
+    // Actualiza la barra de vida dada una vida actual y una vida máxima
     public void actualizarBarraDeVida(float vidaActual, float vidaMax)
     {
         slider = this.GetComponent<Slider>();
         slider.value = vidaActual / vidaMax;
+    }
+
+    // Suma puntos al slider y retorna el nuevo valor que este tiene
+    public float sumarVida(float vidaASumar)
+    {
+        slider.value = slider.value + vidaASumar;
+        return slider.value;
+    }
+
+    // Establece la vida/munición máxima
+    public void setVida(float vida)
+    {
+        vidaMax = vida;
     }
 }
