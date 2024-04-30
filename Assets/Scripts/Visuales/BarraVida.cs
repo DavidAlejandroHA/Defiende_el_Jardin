@@ -41,8 +41,9 @@ public class BarraVida : MonoBehaviour
     // Suma puntos al slider y retorna el nuevo valor que este tiene
     public float sumarVida(float vidaASumar)
     {
-        slider.value = slider.value + vidaASumar;
-        return slider.value;
+        float vidaActual = slider.value * vidaMax;
+        slider.value = (vidaActual + vidaASumar) / vidaMax;
+        return slider.value * vidaMax;
     }
 
     // Establece la vida/munición máxima

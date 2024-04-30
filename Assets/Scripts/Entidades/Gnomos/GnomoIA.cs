@@ -6,15 +6,17 @@ using UnityEngine.AI;
 public class GnomoIA : MonoBehaviour
 {
     // Navmesh
+    //[Header("NavMesh")]
     protected NavMeshAgent agente;
     protected float velocidad;
 
     // Variables
+    [Header("Variables Gnomo IA")]
     public float radio;
     public bool mostrarAreaDeAccion;
-    public float danio;
+    //public float danio;
     public float cooldown;
-    [SerializeField] protected float temporizador;
+    /*[SerializeField]*/ public float temporizador;
 
     // Start is called before the first frame update
 

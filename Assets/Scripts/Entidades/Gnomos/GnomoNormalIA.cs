@@ -25,14 +25,18 @@ public class GnomoNormalIA : GnomoIA
     public float gastoStaminaCorriendo;
     [SerializeField] BarraVida barraDeStamina;
 
+    //Ataque
+    [Header("Ataque")]
+    public float danio;
 
     //Condiciones
     bool agotado;
     bool puedeAtacar;
     bool enHuerta;
-    public bool test;
-
+    //public bool test;
+    
     //Objetos
+    [Header("Destinos")]
     public GameObject huerta;
 
     // Start is called before the first frame update
@@ -42,7 +46,7 @@ public class GnomoNormalIA : GnomoIA
     {
         agente = GetComponent<NavMeshAgent>();
         puedeAtacar = true;
-        temporizador = 0.1f;
+        temporizador = 0f;
         //stamina = 100f;
         _staminaMax = stamina;
         barraDeStamina.setVida(stamina);
