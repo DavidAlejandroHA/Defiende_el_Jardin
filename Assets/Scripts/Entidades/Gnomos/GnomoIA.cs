@@ -3,20 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshAgent))]
+[SelectionBase]
 public class GnomoIA : MonoBehaviour
 {
     // Navmesh
     //[Header("NavMesh")]
     protected NavMeshAgent agente;
-    protected float velocidad;
 
     // Variables
     [Header("Variables Gnomo IA")]
+    public float velocidad;
     public float radio;
     public bool mostrarAreaDeAccion;
     //public float danio;
     public float cooldown;
-    /*[SerializeField]*/ public float temporizador;
+    /*[SerializeField]*/ protected float temporizador;
+
+    [Header("Destinos")]
+    [Tooltip("La IA escoge el destino más cercano entre los mismos tipos de destinos. En este caso" +
+        " se escogerá la huerta más cercana")]
+    public GameObject[] listaHuertas;
 
     // Start is called before the first frame update
 
@@ -29,7 +36,35 @@ public class GnomoIA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-          
+        
+    }
+
+    protected Transform obtenerPosGameObjMasCercano(GameObject[] listaGameObj)
+    {
+        Transform gameObjMasCercano = null;
+        float menorDistancia = Mathf.Infinity;
+
+        // Se comprueba y elige la huerta con menor distancia
+        if (listaGameObj.Length > 0)
+        {
+            foreach (GameObject gameObj in listaGameObj)
+            {
+                float distanciaActual = Vector3.Distance(transform.position, gameObj.transform.position);
+                if (distanciaActual < menorDistancia)
+                {
+                    menorDistancia = distanciaActual;
+                    gameObjMasCercano = gameObj.transform;
+                }
+            }
+        }
+        return gameObjMasCercano; // puede llegar a ser nulo si no hay nada al rededor, hay que                    
+    }
+
+    protected Transform obtenerPosHuertaMasCercana(GameObject[] listaHuertas)
+    {
+        
+        return obtenerPosGameObjMasCercano(listaHuertas);
+        // puede llegar a ser nulo si no hay nada al rededor, hay que tenerlo en cuenta               
     }
 
     protected Transform obtenerPosEnemigoMasCercano(Collider[] listaChoques)
@@ -69,7 +104,8 @@ public class GnomoIA : MonoBehaviour
             RaycastHit hit;
             if (Physics.Linecast(transform.position, enemigoMasCercano.transform.position, out hit))
             {
-                if (hit.transform.tag != "Proyectil" && hit.collider.gameObject.tag != "Enemigo")
+                if (hit.transform.tag != "Proyectil" && hit.collider.gameObject.tag != "Enemigo"
+                    && hit.transform.tag != "Gnomo")
                 {
                     enemigoVisible = false;
                 }

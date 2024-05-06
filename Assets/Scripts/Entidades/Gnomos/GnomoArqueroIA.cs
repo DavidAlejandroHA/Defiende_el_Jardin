@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class GnomoArqueroIA : GnomoIA
 {
     // Navmesh
     /*private NavMeshAgent _agente;
-    private float velocidad;
 
     // Variables
     public float radio;
@@ -43,8 +43,8 @@ public class GnomoArqueroIA : GnomoIA
 
 
     //Objetos
-    [Header("Destinos")]
-    public GameObject huerta;
+    /*[Header("Destinos")]
+    public GameObject huerta;*/
 
     // Start is called before the first frame update
 
@@ -58,7 +58,7 @@ public class GnomoArqueroIA : GnomoIA
         _municionMax = cantidadMunicion;
         barraDeMunicion.setVida(cantidadMunicion);
         municionAgotada = false;
-        velocidad = agente.speed;
+        agente.speed = velocidad ;
         rapidezRecuperacion = rapidezRecuperacion / 10;
     }
 
@@ -74,6 +74,8 @@ public class GnomoArqueroIA : GnomoIA
         {
             temporizador = cooldown;
         }
+
+        Transform huerta = obtenerPosHuertaMasCercana(listaHuertas);
 
         // Se dispara un proyectil cada vez que se reinicia el temporizador
         if (temporizador == cooldown && atacando)
@@ -139,14 +141,12 @@ public class GnomoArqueroIA : GnomoIA
             enHuerta = true;
 
             float progresoSumado = barraDeMunicion.sumarVida(rapidezRecuperacion);
-            Debug.Log(progresoSumado);
             if (progresoSumado < _municionMax)
             {
                 
             }
             else
             {
-                //Debug.Log("A");
                 barraDeMunicion.actualizarBarraDeVida(_municionMax);
                 // Ajusta al 100% exactamente en caso de poder llegado a haber un exceso puntual
                 cantidadMunicion = _municionMax;

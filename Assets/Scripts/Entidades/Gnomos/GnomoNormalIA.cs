@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+
 public class GnomoNormalIA : GnomoIA
 {
     // Navmesh
@@ -18,10 +19,11 @@ public class GnomoNormalIA : GnomoIA
     */
 
     //Barra de Stamina
+    [Header("Stamina")]
     public float stamina;
     private float _staminaMax;
     public float rapidezRecuperacion;
-    public float gastoStamina;
+    public float gastoStaminaGolpe;
     public float gastoStaminaCorriendo;
     [SerializeField] BarraVida barraDeStamina;
 
@@ -36,12 +38,11 @@ public class GnomoNormalIA : GnomoIA
     //public bool test;
     
     //Objetos
-    [Header("Destinos")]
-    public GameObject huerta;
+    /*[Header("Destinos")]
+    public GameObject[] listaHuertas;*/
+    //GameObject[] huerta;
 
     // Start is called before the first frame update
-
-    //int mascara = 1 << 6;
     void Start()
     {
         agente = GetComponent<NavMeshAgent>();
@@ -69,6 +70,8 @@ public class GnomoNormalIA : GnomoIA
         {
             puedeAtacar = true;
         }
+
+        Transform huerta = obtenerPosHuertaMasCercana(listaHuertas);
 
         // Esta lista almacenará el resultado de llamar a OverlapSphere
         Collider[] listaChoques;
@@ -132,7 +135,7 @@ public class GnomoNormalIA : GnomoIA
                     //Debug.Log("aTAQUE");
                     puedeAtacar = false;
                 }
-            stamina -= gastoStamina;
+            stamina -= gastoStaminaGolpe;
             barraDeStamina.actualizarBarraDeVida(stamina);
             //if (test) { Debug.Log("ACTUALIZADO " + stamina); }
 
@@ -152,7 +155,7 @@ public class GnomoNormalIA : GnomoIA
             }
             enHuerta = true;
             
-            if (stamina < 100f)
+            if (stamina < _staminaMax)
             {
                 stamina += rapidezRecuperacion;
                 barraDeStamina.actualizarBarraDeVida(stamina, _staminaMax);
