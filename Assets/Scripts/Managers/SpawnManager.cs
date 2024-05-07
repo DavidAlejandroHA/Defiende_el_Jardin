@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    public static SpawnManager Instance { get; private set; }
+
     [Tooltip("Frecuencia inicial con la que los enemigos aparecen. Aumenta con el paso del tiempo hasta llegar" +
         " al final de la partida")]
     public float cooldown = 1f;
@@ -20,6 +22,19 @@ public class SpawnManager : MonoBehaviour
     //Vector3 posCentroMundo = new Vector3(0f, 0.5f, 0f);
     public Transform centroMundo;
     Vector3 posCentroMundo;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
+
     void Start()
     {
         max_radio = radio;

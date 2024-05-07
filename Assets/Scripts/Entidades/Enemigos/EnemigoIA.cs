@@ -25,8 +25,8 @@ public class EnemigoIA : EntidadesIA
     [SerializeField] BarraVida barraDeVida;
 
     //Condiciones
-    private bool _destinoCompletado;
-    //public bool test;
+    public bool _destinoCompletado;
+    public bool test;
 
     //Valores parámetros
     [Tooltip("Dadas unas unidades de metros, la IA parará antes del destino")]
@@ -90,7 +90,8 @@ public class EnemigoIA : EntidadesIA
     // Si el objetivo ha sido cumplido, hacer despawn tras haberse alejado de la granja
     private void checkMissionCompleted()
     {
-        if (_destinoCompletado && Vector3.Distance(transform.position, destino.transform.position) > distanciaDespawn)
+        if (_destinoCompletado && Vector3.Distance(transform.position, 
+            SpawnManager.Instance.centroMundo.transform.position) > distanciaDespawn)
         {
             morir();
         }
@@ -101,13 +102,21 @@ public class EnemigoIA : EntidadesIA
     {
         if (!_destinoCompletado && !agente.pathPending && agente.remainingDistance < distanciaAParar)
         {
+            float distanciaCentroMundo = Vector3.Distance(transform.position, 
+                SpawnManager.Instance.centroMundo.position);
             _destinoCompletado = true;
-            Vector3 dirToGoal = transform.position - destino.transform.position;
+            Vector3 dirToGoal = transform.position
+                - /*destino.transform.position*/ (transform.forward * 
+                (distanciaDespawn - distanciaCentroMundo + 10f));
             Vector3 newPos = transform.position + dirToGoal;
-            newPos = newPos * 5;
+
             //Importante: hay que tener en cuenta que si el destino está fuera de la zona del navmesh
             // el agente no funcionará correctamente y se parará por el camino sin desaparecer
             newPos = new Vector3(newPos.x, destino.transform.position.y ,newPos.z);
+            if (test)
+            {
+                Debug.Log(newPos);
+            }
             agente.SetDestination(newPos);
 
         }

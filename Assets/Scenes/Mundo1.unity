@@ -6413,7 +6413,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 24, y: 1, z: 24}
+  m_LocalScale: {x: 30, y: 1, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 84758494}
@@ -21858,8 +21858,10 @@ MonoBehaviour:
   vida: 100
   dineroADevolver: 2
   barraDeVida: {fileID: 1119601387}
+  _destinoCompletado: 0
+  test: 0
   distanciaAParar: 3
-  distanciaDespawn: 40
+  distanciaDespawn: 100
 --- !u!4 &659002023
 Transform:
   m_ObjectHideFlags: 0
