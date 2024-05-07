@@ -6,14 +6,15 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [SelectionBase]
-public class EnemigoIA : MonoBehaviour
+public class EnemigoIA : EntidadesIA
 {
     // Navmesh
-    private NavMeshAgent _agente;
+    protected NavMeshAgent agente;
     Transform destino;
 
     //Vida
     [Header("Variables Enemigo IA")]
+    public float velocidad;
     public float vida;
     float vidaMax;
 
@@ -25,7 +26,7 @@ public class EnemigoIA : MonoBehaviour
 
     //Condiciones
     private bool _destinoCompletado;
-    public bool test;
+    //public bool test;
 
     //Valores parámetros
     [Tooltip("Dadas unas unidades de metros, la IA parará antes del destino")]
@@ -33,10 +34,12 @@ public class EnemigoIA : MonoBehaviour
     [Tooltip("Dadas unas unidades de metros, el gnomo desaparecerá del mapa tras alejarse del destino")]
     public float distanciaDespawn;
 
+    /*
     [Header("Destinos")]
     [Tooltip("La IA escoge el destino más cercano entre los mismos tipos de destinos. En este caso" +
         " se escogerá el granero más cercano")]
     public GameObject[] listaGraneros;
+    */
 
     // Start is called before the first frame update
     private void Awake()
@@ -46,19 +49,19 @@ public class EnemigoIA : MonoBehaviour
 
     public void Start()
     {
-        _agente = GetComponent<NavMeshAgent>();
-        destino = obtenerPosGraneroMasCercano(listaGraneros);
-        _agente.destination = destino.position;
-        _agente.stoppingDistance = distanciaAParar;
+        agente = GetComponent<NavMeshAgent>();
+        destino = obtenerPosGraneroMasCercano();
+        agente.destination = destino.position;
+        agente.stoppingDistance = distanciaAParar;
         vidaMax = vida;
+        agente.speed = velocidad;
         barraDeVida.setVida(vida);
         _destinoCompletado = false;
         //barraDeVida = barraDeVidaObj.GetComponent<BarraVida>();
         //barraDeVida.actualizarBarraDeVida(vida, vidaMax); // para asegurar que se actualiza
         // como es debido al volver a empezar
     }
-
-    // 
+    
     public void takeDamage(float damage)
     {
         vida -= damage;
@@ -96,47 +99,27 @@ public class EnemigoIA : MonoBehaviour
     // Si se ha completado el destino principal, hacer que se marche y se aleje del mapa
     private void checkPathComplete()
     {
-        if (!_destinoCompletado && !_agente.pathPending && _agente.remainingDistance < distanciaAParar)
+        if (!_destinoCompletado && !agente.pathPending && agente.remainingDistance < distanciaAParar)
         {
             _destinoCompletado = true;
             Vector3 dirToGoal = transform.position - destino.transform.position;
             Vector3 newPos = transform.position + dirToGoal;
-            newPos = newPos * 4;
+            newPos = newPos * 5;
+            //Importante: hay que tener en cuenta que si el destino está fuera de la zona del navmesh
+            // el agente no funcionará correctamente y se parará por el camino sin desaparecer
             newPos = new Vector3(newPos.x, destino.transform.position.y ,newPos.z);
-            _agente.SetDestination(newPos);
+            agente.SetDestination(newPos);
 
         }
-        if (test)
+        /*if (test)
         {
             Debug.Log("TEST : " + (_agente.remainingDistance < distanciaAParar) + _agente.pathPending);
-        }
+        }*/
     }
-
-    protected Transform obtenerPosGameObjMasCercano(GameObject[] listaGameObj)
+    
+    protected Transform obtenerPosGraneroMasCercano()
     {
-        Transform gameObjMasCercano = null;
-        float menorDistancia = Mathf.Infinity;
-
-        // Se comprueba y elige la huerta con menor distancia
-        if (listaGameObj.Length > 0)
-        {
-            foreach (GameObject gameObj in listaGameObj)
-            {
-                float distanciaActual = Vector3.Distance(transform.position, gameObj.transform.position);
-                if (distanciaActual < menorDistancia)
-                {
-                    menorDistancia = distanciaActual;
-                    gameObjMasCercano = gameObj.transform;
-                }
-            }
-        }
-        return gameObjMasCercano; // puede llegar a ser nulo si no hay nada al rededor, hay que tenerlo
-                                  // en cuenta
-    }
-
-    protected Transform obtenerPosGraneroMasCercano(GameObject[] listaGraneros)
-    {
-        return obtenerPosGameObjMasCercano(listaGraneros);
+        return obtenerPosGameObjMasCercano("Granero");
     }
 
     public float getVidaMax()

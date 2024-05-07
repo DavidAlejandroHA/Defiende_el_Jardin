@@ -23,7 +23,7 @@ public class Proyectil : MonoBehaviour
         if (other.gameObject.tag == "Enemigo")
         {
             other.GetComponent<EnemigoIA>().takeDamage(_danio);
-            Debug.Log("A");
+            //Debug.Log("A");
             Destroy(this.gameObject);
         } else if (other.gameObject.tag != "Gnomo" && other.gameObject.tag != "Proyectil"
             && other.gameObject.tag != "Huerta")

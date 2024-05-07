@@ -4,24 +4,36 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [Tooltip("Frecuencia inicial con la que los enemigos aparecen. Aumenta con el paso del tiempo hasta llegar" +
+        " al final de la partida")]
     public float cooldown = 1f;
     float temporizador;
     public GameObject enemigo;
-    float distanciaMinimaSpawn = 20f;
+    [Tooltip("Distancia más cercana desde la que pueden generarse los enemigos")]
+    public float distanciaMinimaSpawn;
 
     public float radio;
+    float max_radio;
     float centro;
     // Start is called before the first frame update
 
-    Vector3 posCentroMundo = new Vector3(0f, 0.5f, 0f);
+    //Vector3 posCentroMundo = new Vector3(0f, 0.5f, 0f);
+    public Transform centroMundo;
+    Vector3 posCentroMundo;
     void Start()
     {
-        if (radio > 48f)
+        max_radio = radio;
+        if (radio > max_radio)
         {
-            radio = 48f;
+            radio = max_radio;
         } // Se asegura que el enemigo no se pueda generar fuera del mapa y llegar a dar error en caso de que la
         // distancia introducida de rango sea excesiva
 
+        //Se escoje un granero al azar desde donde se hará spawn
+        /*GameObject[] graneros = GameObject.FindGameObjectsWithTag("Granero");
+        posCentroMundo = graneros[Random.Range(0, graneros.Length)].transform.position;*/
+
+        posCentroMundo = centroMundo.position;
         centro = radio / 2;
         temporizador = cooldown;
     }
@@ -36,6 +48,7 @@ public class SpawnManager : MonoBehaviour
 
             /* GameObject nuevoEnemigo = Instantiate(enemigo, posCentroMundo - new Vector3(radio / 2, 0f, radio / 2)
              + new Vector3(Random.value * radio, 0f, Random.value * radio), Quaternion.identity);*/
+
             GameObject nuevoEnemigo = Instantiate(enemigo,
                 puntoAleatorioEnAnillo(posCentroMundo, distanciaMinimaSpawn, radio)
                 , Quaternion.identity);
@@ -61,8 +74,9 @@ public class SpawnManager : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = new Color(20, 192, 203);
-        Gizmos.DrawWireSphere(posCentroMundo, radio);
+        Gizmos.color = new Color(120, 192, 203);
+        Gizmos.DrawWireSphere(posCentroMundo + new Vector3(0, 1f, 0f), radio);
+        Gizmos.DrawWireSphere(posCentroMundo + new Vector3(0, 1f, 0f), distanciaMinimaSpawn);
         //Gizmos.DrawRay(transform.position, transform.forward);
     }
 

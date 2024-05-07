@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [SelectionBase]
-public class GnomoIA : MonoBehaviour
+public class GnomoIA : EntidadesIA
 {
     // Navmesh
     //[Header("NavMesh")]
@@ -20,10 +20,12 @@ public class GnomoIA : MonoBehaviour
     public float cooldown;
     /*[SerializeField]*/ protected float temporizador;
 
+    /*
     [Header("Destinos")]
     [Tooltip("La IA escoge el destino más cercano entre los mismos tipos de destinos. En este caso" +
         " se escogerá la huerta más cercana")]
     public GameObject[] listaHuertas;
+    */
 
     // Start is called before the first frame update
 
@@ -38,32 +40,12 @@ public class GnomoIA : MonoBehaviour
     {
         
     }
-
-    protected Transform obtenerPosGameObjMasCercano(GameObject[] listaGameObj)
+    
+    protected Transform obtenerPosHuertaMasCercana()
     {
-        Transform gameObjMasCercano = null;
-        float menorDistancia = Mathf.Infinity;
+        //return obtenerPosGameObjMasCercano(listaHuertas);
 
-        // Se comprueba y elige la huerta con menor distancia
-        if (listaGameObj.Length > 0)
-        {
-            foreach (GameObject gameObj in listaGameObj)
-            {
-                float distanciaActual = Vector3.Distance(transform.position, gameObj.transform.position);
-                if (distanciaActual < menorDistancia)
-                {
-                    menorDistancia = distanciaActual;
-                    gameObjMasCercano = gameObj.transform;
-                }
-            }
-        }
-        return gameObjMasCercano; // puede llegar a ser nulo si no hay nada al rededor, hay que                    
-    }
-
-    protected Transform obtenerPosHuertaMasCercana(GameObject[] listaHuertas)
-    {
-        
-        return obtenerPosGameObjMasCercano(listaHuertas);
+        return obtenerPosGameObjMasCercano("Huerta");
         // puede llegar a ser nulo si no hay nada al rededor, hay que tenerlo en cuenta               
     }
 

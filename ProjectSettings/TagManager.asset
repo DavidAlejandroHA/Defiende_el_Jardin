@@ -7,6 +7,7 @@ TagManager:
   - Enemigo
   - Huerta
   - Gnomo
+  - Granero
   layers:
   - Default
   - TransparentFX

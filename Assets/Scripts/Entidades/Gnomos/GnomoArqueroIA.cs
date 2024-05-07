@@ -53,12 +53,12 @@ public class GnomoArqueroIA : GnomoIA
     {
         agente = GetComponent<NavMeshAgent>();
         puedeAtacar = false;
-        atacando = true;
+        atacando = false;
         temporizador = cooldown + 0.1f;
         _municionMax = cantidadMunicion;
         barraDeMunicion.setVida(cantidadMunicion);
         municionAgotada = false;
-        agente.speed = velocidad ;
+        agente.speed = velocidad;
         rapidezRecuperacion = rapidezRecuperacion / 10;
     }
 
@@ -75,7 +75,7 @@ public class GnomoArqueroIA : GnomoIA
             temporizador = cooldown;
         }
 
-        Transform huerta = obtenerPosHuertaMasCercana(listaHuertas);
+        Transform huerta = obtenerPosHuertaMasCercana();
 
         // Se dispara un proyectil cada vez que se reinicia el temporizador
         if (temporizador == cooldown && atacando)
@@ -96,6 +96,7 @@ public class GnomoArqueroIA : GnomoIA
         {
             if (enemigoMasCercano != null)
             {
+                atacando = true;
                 agente.speed = velocidad;
                 Vector3 posEnemigo = enemigoMasCercano.GetComponent<EnemigoIA>().transform.position;
                 agente
@@ -172,8 +173,9 @@ public class GnomoArqueroIA : GnomoIA
     // Para hacer la trayectoria dada una altura máxima (lo dejo como apunte por si lo necesito
     // yo en el futuro, no lo voy a usar):
     //https://youtu.be/IvT8hjy6q4o
-    public void ThrowBallAtTargetLocation(GameObject ballGameObject, Vector3 targetLocation, float initialVelocity)
+    public bool ThrowBallAtTargetLocation(GameObject ballGameObject, Vector3 targetLocation, float initialVelocity)
     {
+        bool result = true;
         Vector3 direction = (targetLocation - transform.position).normalized;
         float distance = Vector3.Distance(targetLocation, transform.position);
 
@@ -184,18 +186,24 @@ public class GnomoArqueroIA : GnomoIA
         // https://stackoverflow.com/questions/49383884/find-angle-between-two-objects-while-taking-another-object-as-center-in-unity-us
 
         float angulo = Vector3.Angle(directionA, directionB);
-           
-        float firingElevationAngle = 90f -
-            FiringElevationAngle(Physics.gravity.magnitude, distance, initialVelocity)
-            - (angulo > 0 ? angulo : 90f);
+
+        float firingElevationAngle = FiringElevationAngle(Physics.gravity.magnitude, distance, initialVelocity);
         
+        if (firingElevationAngle == -1f)
+        {
+            return false; // Se sale si el ángulo es inválido y no dispara
+        }
+        
+        firingElevationAngle = 90f - firingElevationAngle - (angulo > 0 ? angulo : 90f);
         //Debug.Log(firingElevationAngle + " " + Vector3.Angle(directionA, directionB));
         Vector3 elevation = Quaternion.AngleAxis(firingElevationAngle, transform.right) * transform.up;
         float directionAngle = AngleBetweenAboutAxis(transform.forward, direction, transform.up);
         Vector3 velocity = Quaternion.AngleAxis(directionAngle, transform.up) * elevation * initialVelocity;
-
+        
         // ballGameObject is object to be thrown
         ballGameObject.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.VelocityChange);
+        
+        return result;
     }
 
     // Helper method to find angle between two points (v1 & v2) with respect to axis n
@@ -212,20 +220,23 @@ public class GnomoArqueroIA : GnomoIA
     /*  
      *  Si el destino a apuntar está fuera de rango (es decir, si con la velocidad inicial designada
      *  no es posible alcanzar el objetivo porque está muy lejos) el try dará un error, por lo que en ese
-     *  caso se usará un ángulo por defecto de 45º
+     *  caso se usará un ángulo de -1º para indicar que no se disparará
      */
     private float FiringElevationAngle(float gravity, float distance, float initialVelocity)
     {
-        float angle = 45f; // Angulo por defecto
+        float angle = -1f; // Angulo por defecto
         try
         {
             angle = 0.5f * Mathf.Asin((gravity * distance) / (initialVelocity * initialVelocity))
             * Mathf.Rad2Deg;
         } catch (Exception)
         {
-
+            
         }
-        
+        if (float.IsNaN(angle))
+        {
+            angle = -1f; // Si está fuera de rango entonces se pone a -1 para indicar que no se debe disparar
+        }
         return angle;
     }
 
@@ -235,13 +246,19 @@ public class GnomoArqueroIA : GnomoIA
             (transform.forward * 0.6f), transform.rotation);
         proyectilInstanciado.SetActive(true);
         proyectilInstanciado.GetComponent<Proyectil>().setDanio(danioProyectil);
-        ThrowBallAtTargetLocation(proyectilInstanciado, posDestino, velocidadLanzamiento);
-        
-        cantidadMunicion--;
-        barraDeMunicion.actualizarBarraDeVida(cantidadMunicion);
-        if (cantidadMunicion <= 0)
+
+        if (ThrowBallAtTargetLocation(proyectilInstanciado, posDestino, velocidadLanzamiento))
         {
-            municionAgotada = true;
+            cantidadMunicion--;
+            barraDeMunicion.actualizarBarraDeVida(cantidadMunicion);
+            if (cantidadMunicion <= 0)
+            {
+                municionAgotada = true;
+            }
+        }
+        else
+        {
+            Destroy(proyectilInstanciado);
         }
     }
 }

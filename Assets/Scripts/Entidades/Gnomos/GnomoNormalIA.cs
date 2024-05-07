@@ -52,7 +52,7 @@ public class GnomoNormalIA : GnomoIA
         _staminaMax = stamina;
         barraDeStamina.setVida(stamina);
         agotado = false;
-        velocidad = agente.speed;
+        agente.speed = velocidad;
     }
 
     // Update is called once per frame
@@ -71,7 +71,7 @@ public class GnomoNormalIA : GnomoIA
             puedeAtacar = true;
         }
 
-        Transform huerta = obtenerPosHuertaMasCercana(listaHuertas);
+        Transform huerta = obtenerPosHuertaMasCercana();
 
         // Esta lista almacenará el resultado de llamar a OverlapSphere
         Collider[] listaChoques;
