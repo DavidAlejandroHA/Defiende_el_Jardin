@@ -104,12 +104,18 @@ public class EnemigoIA : EntidadesIA
         {
             float distanciaCentroMundo = Vector3.Distance(transform.position, 
                 SpawnManager.Instance.centroMundo.position);
-            _destinoCompletado = true;
-            Vector3 dirToGoal = transform.position
-                - /*destino.transform.position*/ (transform.forward * 
-                (distanciaDespawn - distanciaCentroMundo + 10f));
-            Vector3 newPos = transform.position + dirToGoal;
 
+            _destinoCompletado = true;
+            /*Vector3 dirToGoal = transform.position
+                - (transform.forward * 
+                (distanciaDespawn - distanciaCentroMundo + 50f));*/
+            Vector3 dirToGoal = /*transform.position -*/
+                SpawnManager.Instance.puntoAleatorioEnAnillo(
+                    SpawnManager.Instance.centroMundo.position,
+                    SpawnManager.Instance.distanciaMinimaSpawn + 20f,
+                    SpawnManager.Instance.radio + 20f);
+            Vector3 newPos = transform.position + dirToGoal;
+            
             //Importante: hay que tener en cuenta que si el destino está fuera de la zona del navmesh
             // el agente no funcionará correctamente y se parará por el camino sin desaparecer
             newPos = new Vector3(newPos.x, destino.transform.position.y ,newPos.z);
