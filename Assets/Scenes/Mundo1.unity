@@ -43579,7 +43579,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -51957,12 +51957,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50fda13006757b41871b4f551e121b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 4
+  velocidad: 6
   radio: 100
   mostrarAreaDeAccion: 0
   cooldown: 1
   cantidadMunicion: 16
-  rapidezRecuperacion: 0.2
+  rapidezRecuperacion: 0.35
   velocidadLanzamiento: 30
   barraDeMunicion: {fileID: 249477219}
   danioProyectil: 45
