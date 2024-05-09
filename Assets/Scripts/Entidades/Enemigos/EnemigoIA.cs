@@ -20,13 +20,14 @@ public class EnemigoIA : EntidadesIA
 
     // Puntos que devuelve al ser derrotado
     public float dineroADevolver;
+    public float puntosComidaARobar;
 
     //Barra de vida
     [SerializeField] BarraVida barraDeVida;
 
     //Condiciones
     public bool _destinoCompletado;
-    public bool test;
+    //public bool test;
 
     //Valores parámetros
     [Tooltip("Dadas unas unidades de metros, la IA parará antes del destino")]
@@ -57,9 +58,6 @@ public class EnemigoIA : EntidadesIA
         agente.speed = velocidad;
         barraDeVida.setVida(vida);
         _destinoCompletado = false;
-        //barraDeVida = barraDeVidaObj.GetComponent<BarraVida>();
-        //barraDeVida.actualizarBarraDeVida(vida, vidaMax); // para asegurar que se actualiza
-        // como es debido al volver a empezar
     }
     
     public void takeDamage(float damage)
@@ -74,9 +72,13 @@ public class EnemigoIA : EntidadesIA
 
     void morir()
     {
-        /*GameManager.Instance.aniadirDinero(dineroADevolver);
-        GameManager.Instance.aniadirPuntos(dineroADevolver);
-        GameManager.Instance.aniadirMuertes();*/
+        GameManager.Instance.aniadirDinero(dineroADevolver);
+        GameManager.Instance.aniadirMuertes();
+        Destroy(this.gameObject);
+    }
+
+    void despawn()
+    {
         Destroy(this.gameObject);
     }
 
@@ -91,9 +93,9 @@ public class EnemigoIA : EntidadesIA
     private void checkMissionCompleted()
     {
         if (_destinoCompletado && Vector3.Distance(transform.position, 
-            SpawnManager.Instance.centroMundo.transform.position) > distanciaDespawn)
+            SpawnManager.Instance.centroMundo.position) > distanciaDespawn)
         {
-            morir();
+            despawn();
         }
     }
 
@@ -106,6 +108,12 @@ public class EnemigoIA : EntidadesIA
                 SpawnManager.Instance.centroMundo.position);
 
             _destinoCompletado = true;
+            GameManager.Instance.quitarDinero(puntosComidaARobar);
+            
+            //destino.gameObject.GetComponent<GraneroEntity>().almacenamiento -= puntosComidaARobar;
+            dineroADevolver += puntosComidaARobar;
+            // Roba comida y esos puntos de comida se añaden a los puntos que devuelve al morir
+
             /*Vector3 dirToGoal = transform.position
                 - (transform.forward * 
                 (distanciaDespawn - distanciaCentroMundo + 50f));*/
@@ -121,7 +129,7 @@ public class EnemigoIA : EntidadesIA
             
             //Importante: hay que tener en cuenta que si el destino está fuera de la zona del navmesh
             // el agente no funcionará correctamente y se parará por el camino sin desaparecer
-            newPos = new Vector3(newPos.x, destino.transform.position.y ,newPos.z);
+            newPos = new Vector3(newPos.x, destino.position.y ,newPos.z);
             
             agente.SetDestination(newPos);
 
@@ -130,11 +138,6 @@ public class EnemigoIA : EntidadesIA
         {
             Debug.Log("TEST : " + (_agente.remainingDistance < distanciaAParar) + _agente.pathPending);
         }*/
-    }
-    
-    protected Transform obtenerPosGraneroMasCercano()
-    {
-        return obtenerPosGameObjMasCercano("Granero");
     }
 
     public float getVidaMax()

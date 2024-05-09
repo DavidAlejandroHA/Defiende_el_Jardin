@@ -98,7 +98,7 @@ public class GnomoArqueroIA : GnomoIA
             {
                 atacando = true;
                 agente.speed = velocidad;
-                Vector3 posEnemigo = enemigoMasCercano.GetComponent<EnemigoIA>().transform.position;
+                Vector3 posEnemigo = enemigoMasCercano.position;
                 agente
                     .SetDestination(posEnemigo);
                 atacando = true;
@@ -112,9 +112,9 @@ public class GnomoArqueroIA : GnomoIA
         }
 
         // Si está agotado se va a la huerta a reponer energías
-        else if (agente.destination != huerta.transform.position)
+        else if (agente.destination != huerta.position)
         {
-            agente.SetDestination(huerta.transform.position);
+            agente.SetDestination(huerta.position);
             atacando = false;
         }
     }

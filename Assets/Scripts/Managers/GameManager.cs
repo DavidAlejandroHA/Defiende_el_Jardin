@@ -6,10 +6,8 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
-    public int vidas;
-    public float dinero;
-    public float puntos;
+    
+    public float puntosComida;
     public float tiempoRestante;
     public int enemigosMuertos;
 
@@ -41,7 +39,6 @@ public class GameManager : MonoBehaviour
         if (partidaActiva)
         {
             tiempoRestante -= Time.deltaTime;
-
         }
 
         if (tiempoRestante <= 0)
@@ -50,6 +47,11 @@ public class GameManager : MonoBehaviour
             ganarPartida();
         }
 
+        if (puntosComida <= 0)
+        {
+            terminarPartida();
+            perderPartida();
+        }
     }
 
     public void aniadirMuertes()
@@ -58,14 +60,19 @@ public class GameManager : MonoBehaviour
     }
     public void aniadirDinero(float dinero)
     {
-        this.dinero += dinero;
+        this.puntosComida += dinero;
         //UIManager.Instance.actualizarTextoDinero();
         //ButtonManager.Instance.resetImagesColor();
     }
 
     public void quitarDinero(float dinero)
     {
-        this.dinero -= dinero;
+        this.puntosComida -= dinero;
+        if (this.puntosComida <= 0)
+        {
+            terminarPartida();
+            perderPartida();
+        }
         //ButtonManager.Instance.checkEnoughMoney(dinero);
         //UIManager.Instance.actualizarTextoDinero();
         //ButtonManager.Instance.resetImagesColor();
@@ -81,11 +88,6 @@ public class GameManager : MonoBehaviour
             perderPartida();
         }
     }*/
-
-    public void aniadirPuntos(float puntos)
-    {
-        this.puntos += puntos;
-    }
 
     public bool getPartidaActiva()
     {

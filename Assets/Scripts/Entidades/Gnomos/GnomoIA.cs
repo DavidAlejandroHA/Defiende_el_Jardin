@@ -84,7 +84,7 @@ public class GnomoIA : EntidadesIA
              * lo dejo como nota por si acaso*/
 
             RaycastHit hit;
-            if (Physics.Linecast(transform.position, enemigoMasCercano.transform.position, out hit))
+            if (Physics.Linecast(transform.position, enemigoMasCercano.position, out hit))
             {
                 if (hit.transform.tag != "Proyectil" && hit.collider.gameObject.tag != "Enemigo"
                     && hit.transform.tag != "Gnomo")

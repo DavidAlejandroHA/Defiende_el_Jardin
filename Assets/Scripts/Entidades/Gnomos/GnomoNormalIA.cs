@@ -88,7 +88,7 @@ public class GnomoNormalIA : GnomoIA
             {
                 agente.speed = velocidad;
                 agente
-                    .SetDestination(enemigoMasCercano.GetComponent<EnemigoIA>().transform.position);
+                    .SetDestination(enemigoMasCercano.position);
             }
 
             // Mientras lo persigue se va agotando ligeramente
@@ -100,10 +100,10 @@ public class GnomoNormalIA : GnomoIA
         }
 
         // Si está agotado se va a la huerta a reponer energías
-        else if (agente.destination != huerta.transform.position)
+        else if (agente.destination != huerta.position)
         {
             agente
-                    .SetDestination(huerta.transform.position);
+                    .SetDestination(huerta.position);
         }
     }
     

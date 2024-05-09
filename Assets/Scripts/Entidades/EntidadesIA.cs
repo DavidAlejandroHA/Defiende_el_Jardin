@@ -59,4 +59,9 @@ public class EntidadesIA : MonoBehaviour
         }
         return gameObjMasCercano; // puede llegar a ser nulo si no hay nada al rededor, hay que tenerlo en cuenta         
     }
+
+    protected Transform obtenerPosGraneroMasCercano()
+    {
+        return obtenerPosGameObjMasCercano("Granero");
+    }
 }
