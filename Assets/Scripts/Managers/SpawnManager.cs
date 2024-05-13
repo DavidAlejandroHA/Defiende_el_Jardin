@@ -8,7 +8,10 @@ public class SpawnManager : MonoBehaviour
 
     [Tooltip("Frecuencia inicial con la que los enemigos aparecen. Aumenta con el paso del tiempo hasta llegar" +
         " al final de la partida")]
-    public float cooldown = 1f;
+    public float cooldown;
+    public float cooldownInicial;
+    public float cooldownMinimoReducido;
+    public float reducirCooldown;
     float temporizador;
     public GameObject enemigo;
     [Tooltip("Distancia más cercana desde la que pueden generarse los enemigos")]
@@ -50,7 +53,7 @@ public class SpawnManager : MonoBehaviour
 
         posCentroMundo = centroMundo.position;
         centro = radio / 2;
-        temporizador = cooldown;
+        temporizador = cooldown + cooldownInicial;
     }
 
     // Update is called once per frame
@@ -70,7 +73,12 @@ public class SpawnManager : MonoBehaviour
 
             nuevoEnemigo.transform.LookAt(posCentroMundo);
             nuevoEnemigo.SetActive(true);
+            if (cooldown > cooldownMinimoReducido)
+            {
+                cooldown -= reducirCooldown;
+            }
             temporizador = cooldown;
+            Debug.Log(cooldown);
         }
     }
 

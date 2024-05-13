@@ -20,6 +20,8 @@ public class GnomoIA : EntidadesIA
     public float cooldown;
     /*[SerializeField]*/ protected float temporizador;
 
+    public Animator animatorController;
+
     /*
     [Header("Destinos")]
     [Tooltip("La IA escoge el destino más cercano entre los mismos tipos de destinos. En este caso" +
@@ -38,7 +40,7 @@ public class GnomoIA : EntidadesIA
     // Update is called once per frame
     void Update()
     {
-        
+        animatorController.SetFloat("Velocidad", (agente.velocity.magnitude / agente.speed));
     }
     
     protected Transform obtenerPosHuertaMasCercana()
