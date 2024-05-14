@@ -46,6 +46,7 @@ public class GnomoNormalIA : GnomoIA
     void Start()
     {
         agente = GetComponent<NavMeshAgent>();
+        //animatorController = GetComponent<Animator>();
         puedeAtacar = true;
         temporizador = 0f;
         //stamina = 100f;
@@ -58,6 +59,11 @@ public class GnomoNormalIA : GnomoIA
     // Update is called once per frame
     void Update()
     {
+        if (animatorController != null)
+        {
+            animatorController.SetFloat("Velocidad", (agente.velocity.magnitude / agente.speed));
+        }
+        
         // Temporizador para hacer daño cada x tiempo
         temporizador -= Time.deltaTime;
         if (temporizador <= 0)
@@ -81,6 +87,12 @@ public class GnomoNormalIA : GnomoIA
         // se obtiene el enemigo más cercano al gnomo
         Transform enemigoMasCercano = obtenerPosEnemigoMasCercano(listaChoques);
 
+        if (stamina <= 0)
+        {
+            agotado = true;
+            agente.speed = velocidad / 2;
+        }
+
         //Si no está agotado y hay enemigos en el radio de acción se va a perseguirlo
         if (!agotado)
         {
@@ -92,10 +104,11 @@ public class GnomoNormalIA : GnomoIA
             }
 
             // Mientras lo persigue se va agotando ligeramente
-            if (agente.speed > 0)
+            if (agente.velocity.magnitude > 0)
             {
                 
                 stamina -= gastoStaminaCorriendo * agente.speed / agente.speed;
+                barraDeStamina.actualizarBarraDeVida(stamina);
             }
         }
 
@@ -143,7 +156,6 @@ public class GnomoNormalIA : GnomoIA
             {
                 agotado = true;
                 stamina = 0f;
-                agente.speed = velocidad / 2;
             }
         }
 
