@@ -19,6 +19,7 @@ public class GnomoIA : EntidadesIA
     //public float danio;
     public float cooldown;
     /*[SerializeField]*/ protected float temporizador;
+    public GameObject imagenCirculo;
 
     public Animator animatorController;
 

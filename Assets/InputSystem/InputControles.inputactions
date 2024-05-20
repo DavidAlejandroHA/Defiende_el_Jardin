@@ -1,0 +1,134 @@
+{
+    "name": "InputControles",
+    "maps": [
+        {
+            "name": "Camara",
+            "id": "92e659e9-5702-40f7-84cc-028c540c8e93",
+            "actions": [
+                {
+                    "name": "MovimientoVista",
+                    "type": "Button",
+                    "id": "87866a5f-54d2-494a-8e39-abc1995fa371",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MovimientoAdelante",
+                    "type": "Button",
+                    "id": "1baca5fb-2039-4662-9c53-a0bdfc28a418",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MovimientoDetras",
+                    "type": "Button",
+                    "id": "3fc6e199-7001-4a81-a5e5-0b113c2b566f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MovimientoIzq",
+                    "type": "Button",
+                    "id": "2ff7a6c0-d700-41b8-b367-2b9140da65a4",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MovimientoDer",
+                    "type": "Button",
+                    "id": "d0c98075-7062-401f-9a95-422fc00b2052",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Ejes",
+                    "type": "Value",
+                    "id": "ecd99087-23d2-4871-96d0-5c76f1c812c5",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "33548817-d40d-4b37-8dfb-6302953ff8d6",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovimientoVista",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e287043d-19a2-4e51-9fa8-b0b607f42613",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovimientoAdelante",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f71567df-1e91-41e1-9fba-fb8076222301",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovimientoDetras",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cd367faf-690a-44cc-bfa6-8c114e0a8912",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovimientoIzq",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8dda594e-e749-48c1-b46a-3a8f03c519ce",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovimientoDer",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "185677a9-9b95-4c92-9679-733beacc80b9",
+                    "path": "<VirtualMouse>/radius",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Ejes",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -78,7 +78,7 @@ public class SpawnManager : MonoBehaviour
                 cooldown -= reducirCooldown;
             }
             temporizador = cooldown;
-            Debug.Log(cooldown);
+            //Debug.Log(cooldown);
         }
     }
 
