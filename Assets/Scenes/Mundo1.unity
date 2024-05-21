@@ -6117,7 +6117,7 @@ GameObject:
   - component: {fileID: 170713277}
   - component: {fileID: 170713281}
   m_Layer: 7
-  m_Name: Plane
+  m_Name: Terreno
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20543,6 +20543,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 2d765205-f92d-471c-b203-f2734cb8b27b
     m_ActionName: Camara/MovimientoHorizontalCam1[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c175e719-ceb9-4b4e-9af9-e15a66c6e6f3
+    m_ActionName: Camara/ActivarRotacionCamara1[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Camara
