@@ -98,8 +98,8 @@ public class SpawnManager : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(120, 192, 203);
-        Gizmos.DrawWireSphere(posCentroMundo + new Vector3(0, 1f, 0f), radio);
-        Gizmos.DrawWireSphere(posCentroMundo + new Vector3(0, 1f, 0f), distanciaMinimaSpawn);
+        Gizmos.DrawWireSphere(centroMundo.position + new Vector3(0, 1f, 0f), radio);
+        Gizmos.DrawWireSphere(centroMundo.position + new Vector3(0, 1f, 0f), distanciaMinimaSpawn);
         //Gizmos.DrawRay(transform.position, transform.forward);
     }
 

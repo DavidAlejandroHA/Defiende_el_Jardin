@@ -1,13 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Cinemachine;
 
 public class CamaraManager : MonoBehaviour
 {
     public CinemachineVirtualCamera camara;
-    public bool cambiandoPosCamara = true;
-    public bool moviendoVertical = false;
+    public Camera camaraPrincipal;
+    public bool cambiandoRotacionCamara;
+
+    PlayerInput playerInput;
+    [Range(0.1f, 1f)]
+    public float sensibilidadMovimiento;
+    [Range(0f, 100f)]
+    public float velocidad;
 
     public static CamaraManager Instance { get; private set; }
 
@@ -26,31 +33,72 @@ public class CamaraManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        playerInput = GetComponent<PlayerInput>();
+        cambiandoRotacionCamara = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (cambiandoPosCamara)
+        camara.transform.position = camaraPrincipal.transform.position;
+        // Se "ancla" la posición de la cámara principal con la de la cámara del cinemachine,
+        // se evita así que pueda atravesar el terreno usando el CinemachineCollider
+        
+        if (cambiandoRotacionCamara)
         {
-            float movX = Input.GetAxis("Mouse X");
-            float movY = 0f;
-            float movZ = Input.GetAxis("Mouse Y");
-            
-            if (moviendoVertical)
-            {
-                movY = movZ;
-                movZ = 0f;
-            }
+            Vector2 movGeneral = playerInput.actions["RotacionCamara"].ReadValue<Vector2>();
+            float movX = movGeneral.x * sensibilidadMovimiento; //Input.GetAxis("Mouse X");
+            float movY = movGeneral.y * sensibilidadMovimiento; //Input.GetAxis("Mouse Y");
 
-            camara.transform.position = camara.transform.position + new Vector3(movX, movY, movZ);
-            //Debug.Log(camara.transform.position + " - " + new Vector3(movX, movY, movZ));
+            Vector3 rotate = new Vector3(-movY, movX, 0);
+            camara.transform.eulerAngles = camara.transform.eulerAngles + rotate;
+        }
+        leerMovimientoCamara();
+        leerVelocidadCamara();
+    }
+
+    void leerMovimientoCamara()
+    {
+        Vector2 movH = playerInput.actions["MovimientoHorizontalCam"].ReadValue<Vector2>();
+        Vector2 movV = playerInput.actions["MovimientoVerticalCam"].ReadValue<Vector2>();
+        if (movH != Vector2.zero)
+        {
+            camara.transform.Translate(new Vector3(movH.x, 0, movH.y) * velocidad * Time.deltaTime);
+        }
+        if (movV != Vector2.zero)
+        {
+            camara.transform.Translate(new Vector3(0, movV.y, 0) * velocidad * Time.deltaTime);
+        }
+    }
+
+    void leerVelocidadCamara()
+    {
+        float vRueda = playerInput.actions["CambiarVelocidadCamara"].ReadValue<float>()/120f;
+        if(vRueda != 0)
+        {
+            if (!((velocidad <= 0 && vRueda < 0 || velocidad >= 100 && vRueda > 0)))
+            { // Si es menor o igual a 0 o mayor o igual a 100 deja de sumar velocidad
+                velocidad += vRueda;
+            }
+        }
+        
+    }
+
+    public void activarRotacionCamara(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            //Debug.Log("Current Action Map: " + playerInput.currentActionMap.ToString());
+            cambiandoRotacionCamara = true;
+        }
+        if (context.canceled)
+        {
+            cambiandoRotacionCamara = false;
         }
     }
 
     public void cambiarAModoColocarObj(bool value)
     {
-        cambiandoPosCamara = !value;
+        cambiandoRotacionCamara = !value;
     }
 }

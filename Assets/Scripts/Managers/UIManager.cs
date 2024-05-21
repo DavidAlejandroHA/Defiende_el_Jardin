@@ -9,11 +9,10 @@ public class UIManager : MonoBehaviour
 {
     GameObject objetoAColocar;
     GameObject objetoCopiado;
-    List<GameObject> piezasModificadas;
+    //List<GameObject> piezasModificadas;
+    bool objetoSiendoArrastrado;
 
     PlayerInput playerInput;
-    bool objetoSiendoArrastrado;
-    bool modoVistaActivado;
 
     int mascaraSuelo = 1 << 7;
     public static UIManager Instance { get; private set; }
@@ -36,32 +35,13 @@ public class UIManager : MonoBehaviour
     {
         objetoSiendoArrastrado = false;
         playerInput = GetComponent<PlayerInput>();
-        modoVistaActivado = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(playerInput.actions["Ejes"].ReadValue<Vector2>());
+        //Debug.Log(playerInput.actions["Ejes"].ReadValue<Vector2>());
         comprobarColocarObjetos();
-    }
-
-    public void activarVistaCamara(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            //Debug.Log("Current Action Map: " + playerInput.currentActionMap.ToString());
-            CamaraManager.Instance.cambiandoPosCamara = true;
-            
-            //modoVistaActivado = true;
-            //if (playerInput.actions["MovimientoVista"].WasReleasedThisFrame()) {
-        }
-
-        if (context.canceled)
-        {
-            CamaraManager.Instance.cambiandoPosCamara = false;
-            //modoVistaActivado = false;
-        }
     }
 
     public void designarObjeto(GameObject gObj)
@@ -128,9 +108,9 @@ public class UIManager : MonoBehaviour
             {
                 objetoCopiado.gameObject.transform.position = golpeRayo.point;
             }
-            
-            if (modoVistaActivado
-                /*Input.GetMouseButtonDown(0)*/
+
+            if (/*Input.GetMouseButtonDown(0)*/
+            playerInput.actions["ColocarObjetos"].ReadValue<float>() > 0
                 /* && EventSystem.current.IsPointerOverGameObject()*/)
             {
                 //asignarColor(new Color32(255, 255, 255, 255), objetoCopiado, "PiezaCuerpo");
