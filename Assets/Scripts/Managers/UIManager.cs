@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 {
     GameObject objetoAColocar;
     GameObject objetoCopiado;
+    float precioAsignadoAlObjeto;
     //List<GameObject> piezasModificadas;
     bool objetoSiendoArrastrado;
 
@@ -115,6 +116,14 @@ public class UIManager : MonoBehaviour
     {
         if (objetoSiendoArrastrado)
         {
+            if (playerInput.actions["CancelarColocarObjeto"].ReadValue<float>() > 0)
+            {
+                Destroy(objetoCopiado);
+                objetoSiendoArrastrado = false;
+                return;
+            } // Si se cancela la colocación del objeto se destruye la copia y se ignora el resto
+            
+
             Ray rayo = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit golpeRayo;
             if (Physics.Raycast(rayo, out golpeRayo, 100000f, mascaraSuelo))
@@ -128,8 +137,10 @@ public class UIManager : MonoBehaviour
             {
                 //asignarColor(new Color32(255, 255, 255, 255), objetoCopiado, "PiezaCuerpo");
                 objetoCopiado.GetComponent<GnomoIA>().imagenCirculo.SetActive(false);
+                GameManager.Instance.quitarPuntosComidaCompra(precioAsignadoAlObjeto);
                 habilitarScripts(objetoCopiado, true);
                 habilitarCompontentesIA(objetoCopiado, true);
+                
                 objetoSiendoArrastrado = false;
             }
         }
@@ -172,5 +183,15 @@ public class UIManager : MonoBehaviour
     {
         textoPuntosReservas.text = textoPuntosReservasOriginal + 
             GameManager.Instance.getPuntosComidaReservas() + "$";
+    }
+
+    public void setObjetoAColocar(GameObject gObj)
+    {
+        objetoAColocar = gObj;
+    }
+    
+    public void setPrecioAsignadoAlObjeto(float precio)
+    {
+        precioAsignadoAlObjeto = precio;
     }
 }

@@ -111,7 +111,7 @@ public class EnemigoIA : EntidadesIA
                 SpawnManager.Instance.centroMundo.position);
 
             _destinoCompletado = true;
-            GameManager.Instance.quitarDinero(puntosComidaARobar);
+            GameManager.Instance.quitarComidaReservas(puntosComidaARobar);
             
             //destino.gameObject.GetComponent<GraneroEntity>().almacenamiento -= puntosComidaARobar;
             dineroADevolver += puntosComidaARobar;

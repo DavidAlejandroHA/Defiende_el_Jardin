@@ -23,6 +23,8 @@ public class GnomoIA : EntidadesIA
 
     public Animator animatorController;
 
+    float precioAsignado;
+
     /*
     [Header("Destinos")]
     [Tooltip("La IA escoge el destino más cercano entre los mismos tipos de destinos. En este caso" +

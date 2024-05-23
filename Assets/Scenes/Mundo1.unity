@@ -20629,7 +20629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7647ed986bcd9fb41931fa17f473d7b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puntosComidaReservas: 100
+  puntosComidaReservas: 9
   tiempoRestante: 120
   enemigosMuertos: 0
 --- !u!4 &589049526
@@ -20759,6 +20759,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: c175e719-ceb9-4b4e-9af9-e15a66c6e6f3
     m_ActionName: Camara/ActivarRotacionCamara1[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 6aaf894c-234f-4dc3-ba5c-ee3d995deee7
+    m_ActionName: Camara/New action
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Camara
@@ -58682,6 +58686,7 @@ GameObject:
   - component: {fileID: 1798751767}
   - component: {fileID: 1798751766}
   - component: {fileID: 1798751765}
+  - component: {fileID: 1798751768}
   m_Layer: 0
   m_Name: GnomoNormalBtn
   m_TagString: Untagged
@@ -58777,6 +58782,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1798751768}
+        m_TargetAssemblyTypeName: SelfButtonManager, Assembly-CSharp
+        m_MethodName: asignarPrecio
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1798751766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58815,6 +58832,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798751763}
   m_CullTransparentMesh: 1
+--- !u!114 &1798751768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1798751763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b70d6a7888db4449a30a38f7f2f8232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  precio: 10
+  colorDeshabilitado: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+  colorHabilitado: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1798767502
 PrefabInstance:
   m_ObjectHideFlags: 0

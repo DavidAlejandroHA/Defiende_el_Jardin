@@ -68,26 +68,36 @@ public class GameManager : MonoBehaviour
     {
         this.puntosComidaReservas += dinero;
         UIManager.Instance.actualizarTextoPuntosReservas();
-        //ButtonManager.Instance.resetImagesColor();
-    }
-    public void aniadirPuntosComidaCompra(float dinero)
-    {
-        this.puntosComidaCompra += dinero;
-        UIManager.Instance.actualizarTextoPuntosCompra();
-        //ButtonManager.Instance.resetImagesColor();
+        /*if (this.puntosComidaReservas <= 0)
+        {
+            terminarPartida();
+            perderPartida();
+        }*/
     }
 
-    public void quitarDinero(float dinero)
+    public void quitarComidaReservas(float dinero)
     {
         this.puntosComidaReservas -= dinero;
+        UIManager.Instance.actualizarTextoPuntosReservas();
         if (this.puntosComidaReservas <= 0)
         {
             terminarPartida();
             perderPartida();
         }
-        //ButtonManager.Instance.checkEnoughMoney(dinero);
-        //UIManager.Instance.actualizarTextoDinero();
-        //ButtonManager.Instance.resetImagesColor();
+    }
+
+    public void aniadirPuntosComidaCompra(float dinero)
+    {
+        this.puntosComidaCompra += dinero;
+        SelfButtonManager.actualizado = true;
+        UIManager.Instance.actualizarTextoPuntosCompra();
+    }
+
+    public void quitarPuntosComidaCompra(float dinero)
+    {
+        this.puntosComidaCompra -= dinero;
+        SelfButtonManager.actualizado = true;
+        UIManager.Instance.actualizarTextoPuntosCompra();
     }
 
     /*public void quitarVida()
