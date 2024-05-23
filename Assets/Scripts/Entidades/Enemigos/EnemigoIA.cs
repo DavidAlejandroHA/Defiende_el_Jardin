@@ -72,7 +72,10 @@ public class EnemigoIA : EntidadesIA
 
     void morir()
     {
-        GameManager.Instance.aniadirDinero(dineroADevolver);
+        GameManager.Instance.aniadirComidaReservas(dineroADevolver);
+        GameManager.Instance.aniadirPuntosComidaCompra(dineroADevolver);
+        // Se añaden a las reservas los puntos de comdia que tiene + la comida que había robado
+        // el enemigo
         GameManager.Instance.aniadirMuertes();
         Destroy(this.gameObject);
     }

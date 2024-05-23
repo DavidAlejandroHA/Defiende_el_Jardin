@@ -7,7 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     
-    public float puntosComida;
+    public float puntosComidaReservas;
+    float puntosComidaCompra;
+
     public float tiempoRestante;
     public int enemigosMuertos;
 
@@ -31,6 +33,10 @@ public class GameManager : MonoBehaviour
         // Se empieza con 10 puntos para hacer posible defenderse al jugador
         //aniadirDinero(10f);
         Time.timeScale = 1.0f;
+        puntosComidaCompra = 0f;
+
+        //UIManager.Instance.actualizarTextoPuntosCompra();
+        //UIManager.Instance.actualizarTextoPuntosReservas();
     }
 
     // Update is called once per frame
@@ -47,7 +53,7 @@ public class GameManager : MonoBehaviour
             ganarPartida();
         }
 
-        if (puntosComida <= 0)
+        if (puntosComidaReservas <= 0)
         {
             terminarPartida();
             perderPartida();
@@ -58,17 +64,23 @@ public class GameManager : MonoBehaviour
     {
         enemigosMuertos++;
     }
-    public void aniadirDinero(float dinero)
+    public void aniadirComidaReservas(float dinero)
     {
-        this.puntosComida += dinero;
-        //UIManager.Instance.actualizarTextoDinero();
+        this.puntosComidaReservas += dinero;
+        UIManager.Instance.actualizarTextoPuntosReservas();
+        //ButtonManager.Instance.resetImagesColor();
+    }
+    public void aniadirPuntosComidaCompra(float dinero)
+    {
+        this.puntosComidaCompra += dinero;
+        UIManager.Instance.actualizarTextoPuntosCompra();
         //ButtonManager.Instance.resetImagesColor();
     }
 
     public void quitarDinero(float dinero)
     {
-        this.puntosComida -= dinero;
-        if (this.puntosComida <= 0)
+        this.puntosComidaReservas -= dinero;
+        if (this.puntosComidaReservas <= 0)
         {
             terminarPartida();
             perderPartida();
@@ -119,5 +131,15 @@ public class GameManager : MonoBehaviour
         Vector2 point = origen2D + randomDirection * randomDistance;
 
         return new Vector3(point.x, origen.y, point.y);
+    }
+
+    public float getPuntosComidaCompra()
+    {
+        return puntosComidaCompra;
+    }
+
+    public float getPuntosComidaReservas()
+    {
+        return puntosComidaReservas;
     }
 }

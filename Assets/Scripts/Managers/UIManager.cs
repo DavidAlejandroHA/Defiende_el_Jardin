@@ -12,6 +12,12 @@ public class UIManager : MonoBehaviour
     //List<GameObject> piezasModificadas;
     bool objetoSiendoArrastrado;
 
+    [SerializeField] TextMeshProUGUI textoPuntosCompra;
+    [SerializeField] TextMeshProUGUI textoPuntosReservas;
+
+    string textoPuntosCompraOriginal;
+    string textoPuntosReservasOriginal;
+
     PlayerInput playerInput;
 
     int mascaraSuelo = 1 << 7;
@@ -35,6 +41,13 @@ public class UIManager : MonoBehaviour
     {
         objetoSiendoArrastrado = false;
         playerInput = GetComponent<PlayerInput>();
+
+        textoPuntosCompraOriginal = textoPuntosCompra.text;
+        Debug.Log(textoPuntosCompraOriginal);
+        textoPuntosReservasOriginal = textoPuntosReservas.text;
+
+        actualizarTextoPuntosCompra();
+        actualizarTextoPuntosReservas();
     }
 
     // Update is called once per frame
@@ -148,4 +161,16 @@ public class UIManager : MonoBehaviour
 
         return listaPiezasCopia;
     }*/
+
+    public void actualizarTextoPuntosCompra()
+    {
+        textoPuntosCompra.text = textoPuntosCompraOriginal + 
+            GameManager.Instance.getPuntosComidaCompra() + "$";
+    }
+
+    public void actualizarTextoPuntosReservas()
+    {
+        textoPuntosReservas.text = textoPuntosReservasOriginal + 
+            GameManager.Instance.getPuntosComidaReservas() + "$";
+    }
 }

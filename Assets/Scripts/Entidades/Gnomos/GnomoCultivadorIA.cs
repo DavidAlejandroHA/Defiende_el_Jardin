@@ -57,7 +57,8 @@ public class GnomoCultivadorIA : GnomoIA
     {
         if (other.gameObject.tag == "Granero" && !necesitaCultivar)
         {
-            GameManager.Instance.aniadirDinero(capacidadCosecha);
+            GameManager.Instance.aniadirComidaReservas(capacidadCosecha);
+            GameManager.Instance.aniadirPuntosComidaCompra(capacidadCosecha);
             capacidadCosecha = 0f;
             necesitaCultivar = true;
             agente.destination = obtenerPosHuertaMasCercana().position;
