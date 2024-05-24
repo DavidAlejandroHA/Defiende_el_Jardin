@@ -9,6 +9,7 @@ TagManager:
   - Gnomo
   - Granero
   - PiezaCuerpo
+  - PanelMenuPausa
   layers:
   - Default
   - TransparentFX

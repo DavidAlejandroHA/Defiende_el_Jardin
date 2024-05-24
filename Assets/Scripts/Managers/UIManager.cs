@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI textoPuntosCompra;
     [SerializeField] TextMeshProUGUI textoPuntosReservas;
 
+    public GameObject panelMenuPausa;
+
     string textoPuntosCompraOriginal;
     string textoPuntosReservasOriginal;
 
@@ -56,6 +58,19 @@ public class UIManager : MonoBehaviour
     {
         //Debug.Log(playerInput.actions["Ejes"].ReadValue<Vector2>());
         comprobarColocarObjetos();
+    }
+
+    public void gestionarMenu()
+    {
+        if (/*GameManager.Instance.getPartidaActiva() && */
+            !GameManager.Instance.getPartidaTerminada())
+        { // Si la partida se ha terminado el menú no se abrirá ya que no hace falta
+            GameManager.Instance.setPartidaActiva(!GameManager.Instance.getPartidaActiva());
+            panelMenuPausa.SetActive(!GameManager.Instance.getPartidaActiva());
+            //GameManager.Instance.setPartidaActiva(true);
+            Debug.Log(GameManager.Instance.getPartidaActiva());
+        }
+
     }
 
     public void designarObjeto(GameObject gObj)

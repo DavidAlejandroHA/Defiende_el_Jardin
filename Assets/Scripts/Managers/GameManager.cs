@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public int enemigosMuertos;
 
     bool partidaActiva = true;
+    bool partidaTerminada = false;
 
     private void Awake()
     {
@@ -49,13 +50,13 @@ public class GameManager : MonoBehaviour
 
         if (tiempoRestante <= 0)
         {
-            terminarPartida();
+            pausarPartida();
             ganarPartida();
         }
 
         if (puntosComidaReservas <= 0)
         {
-            terminarPartida();
+            pausarPartida();
             perderPartida();
         }
     }
@@ -81,7 +82,7 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.actualizarTextoPuntosReservas();
         if (this.puntosComidaReservas <= 0)
         {
-            terminarPartida();
+            pausarPartida();
             perderPartida();
         }
     }
@@ -116,7 +117,7 @@ public class GameManager : MonoBehaviour
         return partidaActiva;
     }
 
-    public void terminarPartida()
+    public void pausarPartida()
     {
         partidaActiva = false;
         Time.timeScale = 0f;
@@ -125,10 +126,16 @@ public class GameManager : MonoBehaviour
     void ganarPartida()
     {
         //UIManager.Instance.mostrarPanelGanar();
+        partidaActiva = false;
+        partidaTerminada = true;
+        UIManager.Instance.panelMenuPausa.SetActive(false);
     }
     void perderPartida()
     {
         //UIManager.Instance.mostrarPanelPerder();
+        partidaActiva = false;
+        partidaTerminada = true;
+        UIManager.Instance.panelMenuPausa.SetActive(false);
     }
 
     public Vector3 puntoAleatorioEnAnillo(Vector3 origen, float minRadio, float maxRadio)
@@ -151,5 +158,23 @@ public class GameManager : MonoBehaviour
     public float getPuntosComidaReservas()
     {
         return puntosComidaReservas;
+    }
+
+    public void setPartidaActiva(bool activo)
+    {
+        partidaActiva = activo;
+        if (partidaActiva)
+        {
+            Time.timeScale = 1.0f;
+        }
+        else
+        {
+            Time.timeScale = 0.0f;
+        }
+    }
+
+    public bool getPartidaTerminada()
+    {
+        return partidaTerminada;
     }
 }
