@@ -22,6 +22,7 @@ public class GnomoArqueroIA : GnomoIA
     //Barra de Municion
     public int cantidadMunicion;
     private int _municionMax;
+    private float _maxSpeed;
     public float rapidezRecuperacion;
     public float velocidadLanzamiento;
     //public float gastoStamina;
@@ -52,6 +53,7 @@ public class GnomoArqueroIA : GnomoIA
     void Start()
     {
         agente = GetComponent<NavMeshAgent>();
+        _maxSpeed = agente.speed;
         puedeAtacar = false;
         atacando = false;
         temporizador = cooldown + 0.1f;
@@ -65,6 +67,12 @@ public class GnomoArqueroIA : GnomoIA
     // Update is called once per frame
     void Update()
     {
+
+        if (animatorController != null)
+        {
+            animatorController.SetFloat("Velocidad", (agente.velocity.magnitude / _maxSpeed));
+        }
+
         // Temporizador para hacer daño cada x tiempo
         if (atacando)
         {

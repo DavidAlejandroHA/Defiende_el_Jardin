@@ -25,6 +25,7 @@ public class GnomoNormalIA : GnomoIA
     public float rapidezRecuperacion;
     public float gastoStaminaGolpe;
     public float gastoStaminaCorriendo;
+    private float _maxSpeed;
     [SerializeField] BarraVida barraDeStamina;
 
     //Ataque
@@ -46,6 +47,7 @@ public class GnomoNormalIA : GnomoIA
     void Start()
     {
         agente = GetComponent<NavMeshAgent>();
+        _maxSpeed = agente.speed;
         //animatorController = GetComponent<Animator>();
         puedeAtacar = true;
         temporizador = 0f;
@@ -61,7 +63,7 @@ public class GnomoNormalIA : GnomoIA
     {
         if (animatorController != null)
         {
-            animatorController.SetFloat("Velocidad", (agente.velocity.magnitude / agente.speed));
+            animatorController.SetFloat("Velocidad", (agente.velocity.magnitude / _maxSpeed));
         }
         
         // Temporizador para hacer daño cada x tiempo

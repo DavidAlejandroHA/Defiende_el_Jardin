@@ -9,11 +9,10 @@ public class SelfButtonManager : MonoBehaviour
     public Color colorDeshabilitado = new Color32(150, 150, 150, 255); // gris
     public Color colorHabilitado = new Color32(255, 255, 255, 255); // blanco
 
-    public static bool actualizado;
     // Start is called before the first frame update
     void Start()
     {
-        actualizado = true;
+        gestionarColorBoton();
     }
 
     // Update is called once per frame
@@ -24,7 +23,6 @@ public class SelfButtonManager : MonoBehaviour
 
     void gestionarColorBoton()
     {
-        if (actualizado){
             if (GameManager.Instance.getPuntosComidaCompra() < precio)
             {
                 this.GetComponent<Button>().enabled = false;
@@ -35,8 +33,6 @@ public class SelfButtonManager : MonoBehaviour
                 this.GetComponent<Button>().enabled = true;
                 this.GetComponent<Button>().image.color = colorHabilitado;
             }
-            actualizado = false;
-        }
     }
 
     /*public void restarPrecio()

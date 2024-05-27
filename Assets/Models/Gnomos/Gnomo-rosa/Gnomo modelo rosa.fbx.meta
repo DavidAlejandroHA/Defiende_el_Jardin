@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2598e9c360e6a21458e240754a2812a3
+guid: 070d66473bd20154aadba918e56c33e5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -12,28 +12,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Plastilina_marron
-    second: {fileID: 2100000, guid: 8bb5bec5c0f7fa54bb95315b87425ca9, type: 2}
+      name: Plastilina_blanca-rosa
+    second: {fileID: 2100000, guid: f466b11981da32545bb807887b031ede, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Plastilina_roja
-    second: {fileID: 2100000, guid: c2ee6ae7ecfd5b14f9280fb606e071a9, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Plastilina_verde
-    second: {fileID: 2100000, guid: fb0df69dcaabde449acbe884b4379b29, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Plastilina_verde_claro
-    second: {fileID: 2100000, guid: 814858d690dfba340903f1d6c63f7dc1, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Plastilina_verde_claro_2
-    second: {fileID: 2100000, guid: 814858d690dfba340903f1d6c63f7dc1, type: 2}
+      name: Plastilina_rosa
+    second: {fileID: 2100000, guid: 1a5857b9f7ef9da429c04e7f87faf010, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -63,9 +48,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Andar
-      takeName: Armature|Andar
-      internalID: -2323184971990096713
+      name: Armature_rosa|Andar_rosa
+      takeName: Armature_rosa|Andar_rosa
+      internalID: 3452140787501396288
       firstFrame: 0
       lastFrame: 10
       wrapMode: 0
@@ -92,67 +77,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|BarbaAction
-      takeName: Armature|BarbaAction
-      internalID: 5924521915837310510
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Camara_turnaround
-      takeName: Armature|Camara_turnaround
-      internalID: -8553611996918750780
-      firstFrame: 0
-      lastFrame: 120
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Correr
-      takeName: Armature|Correr
-      internalID: -414807830312781855
+      name: Armature_rosa|Correr_rosa
+      takeName: Armature_rosa|Correr_rosa
+      internalID: -7073469414540029945
       firstFrame: 0
       lastFrame: 6
       wrapMode: 0
@@ -179,9 +106,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Quieto
-      takeName: Armature|Quieto
-      internalID: -8247908708334628212
+      name: Armature_rosa|Quieto_rosa
+      takeName: Armature_rosa|Quieto_rosa
+      internalID: 7273278807597515369
       firstFrame: 0
       lastFrame: 1
       wrapMode: 0
@@ -192,93 +119,6 @@ ModelImporter:
       hasAdditiveReferencePose: 0
       loopTime: 1
       loopBlend: 1
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Puntos|Andar
-      takeName: Puntos|Andar
-      internalID: 4309758310956670880
-      firstFrame: 0
-      lastFrame: 10
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Puntos|BarbaAction
-      takeName: Puntos|BarbaAction
-      internalID: 3965934703752258686
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Puntos|Camara_turnaround
-      takeName: Puntos|Camara_turnaround
-      internalID: 4213647159078116688
-      firstFrame: 0
-      lastFrame: 120
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0

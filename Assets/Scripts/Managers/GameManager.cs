@@ -90,14 +90,14 @@ public class GameManager : MonoBehaviour
     public void aniadirPuntosComidaCompra(float dinero)
     {
         this.puntosComidaCompra += dinero;
-        SelfButtonManager.actualizado = true;
+        //SelfButtonManager.actualizado = true;
         UIManager.Instance.actualizarTextoPuntosCompra();
     }
 
     public void quitarPuntosComidaCompra(float dinero)
     {
         this.puntosComidaCompra -= dinero;
-        SelfButtonManager.actualizado = true;
+        //SelfButtonManager.actualizado = true;
         UIManager.Instance.actualizarTextoPuntosCompra();
     }
 

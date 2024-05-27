@@ -23,6 +23,10 @@ public class UIManager : MonoBehaviour
 
     PlayerInput playerInput;
 
+    float verticalOffset = 0f;
+
+    public bool actualizarBotones;
+
     int mascaraSuelo = 1 << 7;
     public static UIManager Instance { get; private set; }
     
@@ -44,6 +48,7 @@ public class UIManager : MonoBehaviour
     {
         objetoSiendoArrastrado = false;
         playerInput = GetComponent<PlayerInput>();
+        //precioActualizado = true;
 
         textoPuntosCompraOriginal = textoPuntosCompra.text;
         Debug.Log(textoPuntosCompraOriginal);
@@ -87,7 +92,8 @@ public class UIManager : MonoBehaviour
             RaycastHit golpeRayo;
             bool colisionConRayo = Physics.Raycast(rayo, out golpeRayo, 100000f, mascaraSuelo);
             objetoCopiado = Object.Instantiate(objetoAColocar,
-                    !colisionConRayo ? objetoAColocar.transform.position : golpeRayo.point,
+                    (!colisionConRayo ? objetoAColocar.transform.position : golpeRayo.point)
+                    + new Vector3(0f, verticalOffset, 0f),
                     objetoAColocar.transform.rotation);
             objetoCopiado.GetComponent<GnomoIA>().imagenCirculo.SetActive(true);
             objetoCopiado.SetActive(true);
@@ -122,9 +128,14 @@ public class UIManager : MonoBehaviour
     void habilitarCompontentesIA(GameObject gameObj, bool trueOrFalse)
     {
         gameObj.GetComponent<NavMeshAgent>().enabled = trueOrFalse;
-        gameObj.GetComponent<Animator>().enabled = trueOrFalse;
+        //gameObj.GetComponent<Animator>().enabled = trueOrFalse;
         gameObj.GetComponent<BoxCollider>().enabled = trueOrFalse;
         gameObj.GetComponent<Rigidbody>().isKinematic = !trueOrFalse;
+    }
+
+    public void setVerticalOffset(float vOff)
+    {
+        verticalOffset = vOff;
     }
 
     void comprobarColocarObjetos()
@@ -143,7 +154,8 @@ public class UIManager : MonoBehaviour
             RaycastHit golpeRayo;
             if (Physics.Raycast(rayo, out golpeRayo, 100000f, mascaraSuelo))
             {
-                objetoCopiado.gameObject.transform.position = golpeRayo.point;
+                objetoCopiado.gameObject.transform.position = golpeRayo.point
+                    + new Vector3(0f, verticalOffset, 0f);
             }
 
             if (/*Input.GetMouseButtonDown(0)*/
