@@ -12,6 +12,7 @@ public class GnomoCultivadorIA : GnomoIA
     private float _cosechaMax;
     public float rapidezCosecha;
     [SerializeField] BarraVida barraDeCosecha;
+    private float _maxSpeed;
 
     //Condiciones
     bool necesitaCultivar;
@@ -27,6 +28,7 @@ public class GnomoCultivadorIA : GnomoIA
     void Start()
     {
         agente = GetComponent<NavMeshAgent>();
+        _maxSpeed = agente.speed;
         temporizador = 0f;
         //stamina = 100f;
         _cosechaMax = capacidadCosecha;
@@ -40,7 +42,10 @@ public class GnomoCultivadorIA : GnomoIA
     // Update is called once per frame
     void Update()
     {
-        
+        if (animatorController != null)
+        {
+            animatorController.SetFloat("Velocidad", (agente.velocity.magnitude / _maxSpeed));
+        }
     }
 
     private void OnDrawGizmos()

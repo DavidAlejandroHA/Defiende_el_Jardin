@@ -35,7 +35,7 @@ BlendTree:
   m_Name: Blend Tree
   m_Childs:
   - serializedVersion: 2
-    m_Motion: {fileID: -5715488383257392531, guid: f6d592dd40571f14f8528d1df6d20b7e, type: 3}
+    m_Motion: {fileID: -825014580039015421, guid: 5469c02c5df8fef48acbdaeff8de6428, type: 3}
     m_Threshold: 0
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -43,15 +43,15 @@ BlendTree:
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -6945153346028275301, guid: f6d592dd40571f14f8528d1df6d20b7e, type: 3}
+    m_Motion: {fileID: 5844192560391894916, guid: 5469c02c5df8fef48acbdaeff8de6428, type: 3}
     m_Threshold: 0.5
     m_Position: {x: 0, y: 0}
-    m_TimeScale: 0.5
+    m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: Blend
     m_Mirror: 0
   - serializedVersion: 2
-    m_Motion: {fileID: -7478565339378660548, guid: f6d592dd40571f14f8528d1df6d20b7e, type: 3}
+    m_Motion: {fileID: -1973744208491503005, guid: 5469c02c5df8fef48acbdaeff8de6428, type: 3}
     m_Threshold: 1
     m_Position: {x: 0, y: 0}
     m_TimeScale: 1
@@ -93,7 +93,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Gnomos-rojo
+  m_Name: Gnomos-amarillo
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Blend

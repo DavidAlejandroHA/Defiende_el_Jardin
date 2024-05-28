@@ -13,6 +13,7 @@ public class SelfButtonManager : MonoBehaviour
     void Start()
     {
         gestionarColorBoton();
+        this.GetComponent<Button>().transition = Selectable.Transition.ColorTint;
     }
 
     // Update is called once per frame
