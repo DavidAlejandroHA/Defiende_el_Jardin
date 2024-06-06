@@ -4549,7 +4549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b70d6a7888db4449a30a38f7f2f8232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  precio: 10
+  precio: 20
   colorDeshabilitado: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
   colorHabilitado: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &137490090
@@ -4632,7 +4632,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1798751768}
+      - m_Target: {fileID: 137490089}
         m_TargetAssemblyTypeName: SelfButtonManager, Assembly-CSharp
         m_MethodName: asignarPrecio
         m_Mode: 1
@@ -9256,8 +9256,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 28.9, y: -27.5}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 26.45, y: -27.5}
+  m_SizeDelta: {x: 4.8999996, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &271218462
 MonoBehaviour:
@@ -9279,17 +9279,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5
+  m_text: 30$
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
+  m_sharedMaterial: {fileID: -3015483672286125469, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4282985420
+  m_fontColor: {r: 0.8018868, g: 0.17021184, b: 0.28632858, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -10134,8 +10134,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 28.9, y: -27.5}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 26.45, y: -27.5}
+  m_SizeDelta: {x: 4.8999996, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &295827692
 MonoBehaviour:
@@ -10157,17 +10157,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1
+  m_text: 10$
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
+  m_sharedMaterial: {fileID: -3015483672286125469, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4285180616
+  m_fontColor: {r: 0.7830189, g: 0.66786283, b: 0.41736382, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -16226,8 +16226,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 28.9, y: -27.5}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 26.45, y: -27.5}
+  m_SizeDelta: {x: 4.8999996, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &483732071
 MonoBehaviour:
@@ -16249,17 +16249,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 3
+  m_text: 10$
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
+  m_sharedMaterial: {fileID: -3015483672286125469, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4288771781
+  m_fontColor: {r: 0.7735849, g: 0.46342114, b: 0.6311666, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -16794,8 +16794,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 102.3, y: -95.1}
-  m_SizeDelta: {x: 205.459, y: 74.1679}
+  m_AnchoredPosition: {x: 102.3, y: -95.100006}
+  m_SizeDelta: {x: 192.16, y: 74.1679}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &506473385
 MonoBehaviour:
@@ -16819,8 +16819,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Reservas en granja: '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
+  m_sharedMaterial: {fileID: -3015483672286125469, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -19219,17 +19219,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Menu
+  m_text: "Men\xFA"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
+  m_sharedMaterial: {fileID: -3015483672286125469, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4284792575
+  m_fontColor: {r: 1, g: 0.7457618, b: 0.3915094, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -19557,6 +19557,7 @@ GameObject:
   - component: {fileID: 589049527}
   - component: {fileID: 589049528}
   - component: {fileID: 589049529}
+  - component: {fileID: 589049531}
   - component: {fileID: 589049530}
   m_Layer: 0
   m_Name: ----Managers----
@@ -19607,10 +19608,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e44ff3ab063254d89aafb565a6a503, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 3
+  cooldown: 4
   cooldownInicial: 1
   cooldownMinimoReducido: 1
-  reducirCooldown: 0.04
+  reducirCooldown: 0.053
   enemigo: {fileID: 659002020}
   distanciaMinimaSpawn: 100
   radio: 110
@@ -19734,6 +19735,18 @@ MonoBehaviour:
   m_DefaultActionMap: Camara
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &589049531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589049524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1857fa88fab0746bbda18f065368dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &595074040
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23347,8 +23360,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 28.9, y: -27.5}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 26.45, y: -27.5}
+  m_SizeDelta: {x: 4.8999996, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &707003359
 MonoBehaviour:
@@ -23370,17 +23383,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2
+  m_text: 15$
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
+  m_sharedMaterial: {fileID: -3015483672286125469, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4280846092
+  m_fontColor: {r: 0.0473478, g: 0.5283019, b: 0.15646417, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -27860,7 +27873,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1798751768}
+      - m_Target: {fileID: 817070832}
         m_TargetAssemblyTypeName: SelfButtonManager, Assembly-CSharp
         m_MethodName: asignarPrecio
         m_Mode: 1
@@ -36343,7 +36356,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b70d6a7888db4449a30a38f7f2f8232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  precio: 10
+  precio: 30
   colorDeshabilitado: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
   colorHabilitado: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1043590564
@@ -36426,7 +36439,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1798751768}
+      - m_Target: {fileID: 1043590563}
         m_TargetAssemblyTypeName: SelfButtonManager, Assembly-CSharp
         m_MethodName: asignarPrecio
         m_Mode: 1
@@ -44792,6 +44805,7 @@ GameObject:
   - component: {fileID: 1329043700}
   - component: {fileID: 1329043699}
   - component: {fileID: 1329043698}
+  - component: {fileID: 1329043701}
   m_Layer: 0
   m_Name: SalirMenuBoton
   m_TagString: Untagged
@@ -44863,16 +44877,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 589049528}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: gestionarMenu
-        m_Mode: 1
+      - m_Target: {fileID: 1329043701}
+        m_TargetAssemblyTypeName: GlobalUIManager, Assembly-CSharp
+        m_MethodName: cargarEscena
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MenuPrincipal
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1329043699
@@ -44913,6 +44927,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329043696}
   m_CullTransparentMesh: 1
+--- !u!114 &1329043701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1329043696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad1857fa88fab0746bbda18f065368dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1330173895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53023,8 +53049,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 28.9, y: -27.5}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 26.45, y: -27.5}
+  m_SizeDelta: {x: 4.8999996, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1647650074
 MonoBehaviour:
@@ -53046,17 +53072,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 4
+  m_text: 20$
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
+  m_sharedMaterial: {fileID: -3015483672286125469, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294943557
+  m_fontColor: {r: 0.2688679, g: 0.6403868, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -57414,7 +57440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b70d6a7888db4449a30a38f7f2f8232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  precio: 10
+  precio: 15
   colorDeshabilitado: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
   colorHabilitado: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1798767502
@@ -57966,7 +57992,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1bd235bd44af1c54f9953e0b743908cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 31669189b8a944d41ba58c8f1474054f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -58801,7 +58827,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1798751768}
+      - m_Target: {fileID: 1834733302}
         m_TargetAssemblyTypeName: SelfButtonManager, Assembly-CSharp
         m_MethodName: asignarPrecio
         m_Mode: 1
@@ -68147,8 +68173,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Puntos: '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
+  m_sharedMaterial: {fileID: -3015483672286125469, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -68891,7 +68917,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -50, y: -60}
+  m_AnchoredPosition: {x: -50, y: -30}
   m_SizeDelta: {x: 100, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2133497274
@@ -68908,13 +68934,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: f218a4577b403f840a04c9fe551f1427, type: 3}
+  m_Texture: {fileID: 2800000, guid: a4847ad9fed0cd64ebac3e27d8d04380, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
