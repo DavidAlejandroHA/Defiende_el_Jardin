@@ -43,6 +43,6 @@ public class SelfButtonManager : MonoBehaviour
 
     public void asignarPrecio()
     {
-        UIManager.Instance.setPrecioAsignadoAlObjeto(precio);
+        GameUIManager.Instance.setPrecioAsignadoAlObjeto(precio);
     }
 }

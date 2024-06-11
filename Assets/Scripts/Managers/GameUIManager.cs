@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class UIManager : MonoBehaviour
+public class GameUIManager : MonoBehaviour
 {
     GameObject objetoAColocar;
     GameObject objetoCopiado;
@@ -16,20 +16,26 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI textoPuntosCompra;
     [SerializeField] TextMeshProUGUI textoPuntosReservas;
+    [SerializeField] TextMeshProUGUI textoTiempoRestante;
+    public TextMeshProUGUI textoPuntuacionPartida;
+    public TextMeshProUGUI textoEnemigosDerrotados;
+    public GameObject panelGanar;
+    public GameObject panelPerder;
 
     public GameObject panelMenuPausa;
 
     string textoPuntosCompraOriginal;
+    string textoTiempoRestanteOriginal;
     string textoPuntosReservasOriginal;
 
     PlayerInput playerInput;
 
     float verticalOffset = 0f;
 
-    public bool actualizarBotones;
+    //public bool actualizarBotones;
 
     int mascaraSuelo = 1 << 7;
-    public static UIManager Instance { get; private set; }
+    public static GameUIManager Instance { get; private set; }
     
     
     private void Awake()
@@ -52,7 +58,7 @@ public class UIManager : MonoBehaviour
         //precioActualizado = true;
 
         textoPuntosCompraOriginal = textoPuntosCompra.text;
-        Debug.Log(textoPuntosCompraOriginal);
+        textoTiempoRestanteOriginal = textoTiempoRestante.text;
         textoPuntosReservasOriginal = textoPuntosReservas.text;
 
         actualizarTextoPuntosCompra();
@@ -211,6 +217,12 @@ public class UIManager : MonoBehaviour
     {
         textoPuntosReservas.text = textoPuntosReservasOriginal + 
             GameManager.Instance.getPuntosComidaReservas() + "$";
+    }
+
+    public void actualizarTextoTiempo()
+    {
+        textoTiempoRestante.text = textoTiempoRestanteOriginal + 
+            GameManager.Instance.tiempoRestante.ToString("F0") + " s";
     }
 
     public void setObjetoAColocar(GameObject gObj)

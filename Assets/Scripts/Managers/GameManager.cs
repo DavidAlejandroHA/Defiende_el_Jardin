@@ -46,16 +46,21 @@ public class GameManager : MonoBehaviour
         if (partidaActiva)
         {
             tiempoRestante -= Time.deltaTime;
+            GameUIManager.Instance.actualizarTextoTiempo();
         }
 
         if (tiempoRestante <= 0)
         {
+            tiempoRestante = 0;
+            GameUIManager.Instance.actualizarTextoTiempo();
             pausarPartida();
             ganarPartida();
         }
 
         if (puntosComidaReservas <= 0)
         {
+            puntosComidaReservas = 0;
+            GameUIManager.Instance.actualizarTextoPuntosReservas();
             pausarPartida();
             perderPartida();
         }
@@ -68,7 +73,7 @@ public class GameManager : MonoBehaviour
     public void aniadirComidaReservas(float dinero)
     {
         this.puntosComidaReservas += dinero;
-        UIManager.Instance.actualizarTextoPuntosReservas();
+        GameUIManager.Instance.actualizarTextoPuntosReservas();
         /*if (this.puntosComidaReservas <= 0)
         {
             terminarPartida();
@@ -79,38 +84,28 @@ public class GameManager : MonoBehaviour
     public void quitarComidaReservas(float dinero)
     {
         this.puntosComidaReservas -= dinero;
-        UIManager.Instance.actualizarTextoPuntosReservas();
         if (this.puntosComidaReservas <= 0)
         {
+            this.puntosComidaReservas = 0;
             pausarPartida();
             perderPartida();
         }
+        GameUIManager.Instance.actualizarTextoPuntosReservas();
     }
 
     public void aniadirPuntosComidaCompra(float dinero)
     {
         this.puntosComidaCompra += dinero;
         //SelfButtonManager.actualizado = true;
-        UIManager.Instance.actualizarTextoPuntosCompra();
+        GameUIManager.Instance.actualizarTextoPuntosCompra();
     }
 
     public void quitarPuntosComidaCompra(float dinero)
     {
         this.puntosComidaCompra -= dinero;
         //SelfButtonManager.actualizado = true;
-        UIManager.Instance.actualizarTextoPuntosCompra();
+        GameUIManager.Instance.actualizarTextoPuntosCompra();
     }
-
-    /*public void quitarVida()
-    {
-        //puntos += 5;
-        //TODO: Finalizar juego al perder todas las vidas
-        if (vidas <= 0)
-        {
-            terminarPartida();
-            perderPartida();
-        }
-    }*/
 
     public bool getPartidaActiva()
     {
@@ -119,23 +114,37 @@ public class GameManager : MonoBehaviour
 
     public void pausarPartida()
     {
-        partidaActiva = false;
-        Time.timeScale = 0f;
+        if (!partidaTerminada)
+        {
+            partidaActiva = false;
+            Time.timeScale = 0f;
+        }
     }
 
     void ganarPartida()
     {
-        //UIManager.Instance.mostrarPanelGanar();
-        partidaActiva = false;
-        partidaTerminada = true;
-        UIManager.Instance.panelMenuPausa.SetActive(false);
+        if (!partidaTerminada)
+        {
+            //UIManager.Instance.mostrarPanelGanar();
+            partidaActiva = false;
+            partidaTerminada = true;
+            GameUIManager.Instance.panelMenuPausa.SetActive(false);
+            GameUIManager.Instance.textoPuntuacionPartida.text =
+                GameUIManager.Instance.textoPuntuacionPartida.text + (puntosComidaReservas + puntosComidaCompra
+                + enemigosMuertos) + " puntos";
+            GameUIManager.Instance.textoEnemigosDerrotados.text = GameUIManager.Instance.textoEnemigosDerrotados.text
+                + enemigosMuertos;
+            GameUIManager.Instance.panelGanar.SetActive(true);
+        }
     }
     void perderPartida()
     {
         //UIManager.Instance.mostrarPanelPerder();
         partidaActiva = false;
         partidaTerminada = true;
-        UIManager.Instance.panelMenuPausa.SetActive(false);
+        GameUIManager.Instance.panelMenuPausa.SetActive(false);
+        GameUIManager.Instance.panelPerder.SetActive(true);
+
     }
 
     public Vector3 puntoAleatorioEnAnillo(Vector3 origen, float minRadio, float maxRadio)
