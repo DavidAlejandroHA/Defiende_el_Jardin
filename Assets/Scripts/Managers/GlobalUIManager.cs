@@ -14,6 +14,7 @@ public class GlobalUIManager : MonoBehaviour
     void Start()
     {
         Application.targetFrameRate = 60;
+        seleccionarUIBotones = false;
     }
 
     public static GlobalUIManager Instance { get; private set; }
@@ -41,7 +42,7 @@ public class GlobalUIManager : MonoBehaviour
         if (context.performed)
         {
             //Debug.Log("Current Action Map: " + playerInput.currentActionMap.ToString());
-            if (seleccionarUIBotones)
+            if (!seleccionarUIBotones)
             {
                 UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(botonPorDefecto);
             }
