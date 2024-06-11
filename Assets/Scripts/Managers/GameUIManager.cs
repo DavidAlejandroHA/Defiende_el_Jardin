@@ -21,6 +21,10 @@ public class GameUIManager : MonoBehaviour
     public TextMeshProUGUI textoEnemigosDerrotados;
     public GameObject panelGanar;
     public GameObject panelPerder;
+    public GameObject tablonOpcionesGnomos;
+    public GameObject panelPerderBtn;
+    public GameObject botonRenaudarMenuPausa;
+    public GameObject botonOKPanelGanar;
 
     public GameObject panelMenuPausa;
 
@@ -63,6 +67,9 @@ public class GameUIManager : MonoBehaviour
 
         actualizarTextoPuntosCompra();
         actualizarTextoPuntosReservas();
+
+        GlobalUIManager.Instance.botonPorDefecto = GameObject.Find("MenuBoton");
+        //UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(GameObject.Find("MenuBoton"));
     }
 
     // Update is called once per frame
@@ -79,8 +86,20 @@ public class GameUIManager : MonoBehaviour
         { // Si la partida se ha terminado el menú no se abrirá ya que no hace falta
             GameManager.Instance.setPartidaActiva(!GameManager.Instance.getPartidaActiva());
             panelMenuPausa.SetActive(!GameManager.Instance.getPartidaActiva());
+            /*if (GameManager.Instance.getPartidaActiva())
+            {
+                botonPorDefecto = botonRenaudarMenuPausa;
+            }
+            else
+            {
+                botonPorDefecto = GameObject.Find("MenuBoton");
+                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(botonPorDefecto);
+            }
+            if (GlobalUIManager.Instance.seleccionarUIBotones)
+            {
+                UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(botonPorDefecto);
+            }*/
             //GameManager.Instance.setPartidaActiva(true);
-            Debug.Log(GameManager.Instance.getPartidaActiva());
         }
 
     }

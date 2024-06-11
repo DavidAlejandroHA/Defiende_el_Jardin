@@ -135,6 +135,8 @@ public class GameManager : MonoBehaviour
             GameUIManager.Instance.textoEnemigosDerrotados.text = GameUIManager.Instance.textoEnemigosDerrotados.text
                 + enemigosMuertos;
             GameUIManager.Instance.panelGanar.SetActive(true);
+            GameUIManager.Instance.tablonOpcionesGnomos.SetActive(false);
+            UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(GlobalUIManager.Instance.botonPorDefecto);
         }
     }
     void perderPartida()
@@ -144,7 +146,8 @@ public class GameManager : MonoBehaviour
         partidaTerminada = true;
         GameUIManager.Instance.panelMenuPausa.SetActive(false);
         GameUIManager.Instance.panelPerder.SetActive(true);
-
+        GameUIManager.Instance.tablonOpcionesGnomos.SetActive(false);
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(GameUIManager.Instance.panelPerderBtn);
     }
 
     public Vector3 puntoAleatorioEnAnillo(Vector3 origen, float minRadio, float maxRadio)

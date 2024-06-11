@@ -51,15 +51,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "CambiarVelocidadCamara",
-                    "type": "Value",
-                    "id": "2375f6a2-4ab8-4e39-a7c2-e069aa4207b2",
-                    "expectedControlType": "Double",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "CancelarColocarObjeto",
                     "type": "Button",
                     "id": "6aaf894c-234f-4dc3-ba5c-ee3d995deee7",
@@ -69,9 +60,36 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "CambiarVelocidadCamara",
+                    "type": "Value",
+                    "id": "2375f6a2-4ab8-4e39-a7c2-e069aa4207b2",
+                    "expectedControlType": "Double",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "CambiarVelocidadCamaraMando",
+                    "type": "Value",
+                    "id": "99292192-b131-4a89-bcb5-a268833a611f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "ActivarMenuPausa",
                     "type": "Button",
                     "id": "ed5f7ccc-aa7f-47c5-b4a9-7a749cacdd86",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ActivarFocusUI",
+                    "type": "Button",
+                    "id": "b51bb29d-0b57-4c74-9d32-11054934c30b",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -91,9 +109,75 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "2D Vector",
+                    "id": "7e1a9b91-6e74-48a0-b28f-2d365133f3b5",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "ScaleVector2(x=4,y=4)",
+                    "groups": "",
+                    "action": "RotacionCamara",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "c3259f79-bfd3-46f2-b409-c643f5c8315a",
+                    "path": "<Gamepad>/rightStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotacionCamara",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "e5314680-4f30-4a7a-84ad-8e680efb4bea",
+                    "path": "<Gamepad>/rightStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotacionCamara",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "e931b100-6f6e-4c6c-a4fb-567e1ddef60b",
+                    "path": "<Gamepad>/rightStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotacionCamara",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "dff5f306-236d-4716-8da2-267f7bc7db62",
+                    "path": "<Gamepad>/rightStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RotacionCamara",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "33548817-d40d-4b37-8dfb-6302953ff8d6",
                     "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActivarRotacionCamara",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "42d6e780-ffea-4bd7-bfc4-e9cbdd09ddef",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -169,6 +253,61 @@
                 },
                 {
                     "name": "2D Vector",
+                    "id": "f7da3a12-2648-4881-b6d1-5b9a7315a4c3",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovimientoHorizontalCam",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "4fae218a-562c-40da-96f8-a13d4740b01d",
+                    "path": "<Gamepad>/leftStick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovimientoHorizontalCam",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "869218e0-72df-410d-ba15-b425a2e0144f",
+                    "path": "<Gamepad>/leftStick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovimientoHorizontalCam",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "a54642b4-9062-433d-bb4c-dd5c7efb4308",
+                    "path": "<Gamepad>/leftStick/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovimientoHorizontalCam",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "2ee7c0ec-af1e-46fa-b42c-760fb5f22d42",
+                    "path": "<Gamepad>/leftStick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovimientoHorizontalCam",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "2D Vector",
                     "id": "f5a044ee-9c44-4e7b-9ec5-45214495827f",
                     "path": "2DVector",
                     "interactions": "",
@@ -223,6 +362,61 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "2D Vector",
+                    "id": "1c7c5c18-6394-4532-a81a-3cdab03710fc",
+                    "path": "2DVector",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovimientoVerticalCam",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "f21a15b0-2987-4ea8-b291-219daff7921f",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovimientoVerticalCam",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "32dc4f39-6edd-478d-ac2e-58b0cc2f5de0",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovimientoVerticalCam",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "ba32bf13-5263-4d65-a055-17ab25e3232c",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovimientoVerticalCam",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "bcef22e0-02a7-484a-aeec-6a49bc48278d",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MovimientoVerticalCam",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "",
                     "id": "b672ef6f-6841-4cb5-a8b0-f2b9abf95e29",
                     "path": "<Mouse>/leftButton",
@@ -230,6 +424,72 @@
                     "processors": "",
                     "groups": "",
                     "action": "ColocarObjetos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "84c69d40-942d-4984-ab88-94695da2fd77",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ColocarObjetos",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "efe8657f-2400-4766-8ac6-e50234d75e6b",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActivarMenuPausa",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f551c639-c38b-47ce-9386-46fec599c134",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActivarMenuPausa",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bec4642d-c404-4aa2-aff7-e28ab10df6c2",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActivarFocusUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e843e8c4-dc1e-444b-bc85-62376e420c38",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ActivarFocusUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1709dc3e-8b4d-42e6-b09f-66818c82ced9",
+                    "path": "<Gamepad>/dpad",
+                    "interactions": "",
+                    "processors": "ScaleVector2(x=10,y=10)",
+                    "groups": "",
+                    "action": "CambiarVelocidadCamaraMando",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -246,12 +506,12 @@
                 },
                 {
                     "name": "",
-                    "id": "efe8657f-2400-4766-8ac6-e50234d75e6b",
-                    "path": "<Keyboard>/escape",
+                    "id": "c2e1ad76-9d63-4a20-a231-3d17b5e26fe8",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ActivarMenuPausa",
+                    "action": "CancelarColocarObjeto",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -15,6 +15,7 @@ public class CamaraManager : MonoBehaviour
     public float sensibilidadMovimiento;
     [Range(0f, 100f)]
     public float velocidad;
+    public float velocidadMaxima;
 
     public static CamaraManager Instance { get; private set; }
 
@@ -76,12 +77,21 @@ public class CamaraManager : MonoBehaviour
         float vRueda = playerInput.actions["CambiarVelocidadCamara"].ReadValue<float>()/120f;
         if(vRueda != 0)
         {
-            if (!((velocidad <= 0 && vRueda < 0 || velocidad >= 100 && vRueda > 0)))
+            if (!((velocidad <= 0 && vRueda < 0 || velocidad >= velocidadMaxima && vRueda > 0)))
             { // Si es menor o igual a 0 o mayor o igual a 100 deja de sumar velocidad
                 velocidad += vRueda;
             }
         }
-        
+
+        float vMandoAxis = playerInput.actions["CambiarVelocidadCamaraMando"].ReadValue<Vector2>().y/40;
+        if (vMandoAxis != 0)
+        {
+            if (!((velocidad <= 0 && vMandoAxis < 0 || velocidad >= velocidadMaxima && vMandoAxis > 0)))
+            { // Si es menor o igual a 0 o mayor o igual a 100 deja de sumar velocidad
+                velocidad += vMandoAxis;
+            }
+        }
+
     }
 
     public void activarRotacionCamara(InputAction.CallbackContext context)
