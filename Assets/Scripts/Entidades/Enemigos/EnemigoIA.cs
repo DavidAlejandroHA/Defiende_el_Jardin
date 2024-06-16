@@ -15,6 +15,7 @@ public class EnemigoIA : EntidadesIA
     //Vida
     [Header("Variables Enemigo IA")]
     public float velocidad;
+    private float _maxSpeed;
     public float vida;
     float vidaMax;
 
@@ -25,6 +26,8 @@ public class EnemigoIA : EntidadesIA
     //Barra de vida
     [SerializeField] BarraVida barraDeVida;
 
+    public Animator animatorController;
+
     //Condiciones
     public bool _destinoCompletado;
     //public bool test;
@@ -34,6 +37,8 @@ public class EnemigoIA : EntidadesIA
     public float distanciaAParar;
     [Tooltip("Dadas unas unidades de metros, el gnomo desaparecerá del mapa tras alejarse del destino")]
     public float distanciaDespawn;
+
+    public GameObject itemComida;
 
     /*
     [Header("Destinos")]
@@ -51,6 +56,7 @@ public class EnemigoIA : EntidadesIA
     public void Start()
     {
         agente = GetComponent<NavMeshAgent>();
+        _maxSpeed = agente.speed;
         destino = obtenerPosGraneroMasCercano();
         agente.destination = destino.position;
         agente.stoppingDistance = distanciaAParar;
@@ -90,6 +96,11 @@ public class EnemigoIA : EntidadesIA
     {
         checkPathComplete();
         checkMissionCompleted();
+
+        if (animatorController != null)
+        {
+            animatorController.SetFloat("Velocidad", (agente.velocity.magnitude / _maxSpeed));
+        }
     }
 
     // Si el objetivo ha sido cumplido, hacer despawn tras haberse alejado de la granja
@@ -107,6 +118,7 @@ public class EnemigoIA : EntidadesIA
     {
         if (!_destinoCompletado && !agente.pathPending && agente.remainingDistance < distanciaAParar)
         {
+            itemComida.SetActive(true);
             float distanciaCentroMundo = Vector3.Distance(transform.position, 
                 SpawnManager.Instance.centroMundo.position);
 
