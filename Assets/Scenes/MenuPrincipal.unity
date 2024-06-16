@@ -760,7 +760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   botonPorDefecto: {fileID: 950108855}
   playerInput: {fileID: 1003793929}
-  seleccionarUIBotones: 0
+  seleccionarUIBotones: 1
 --- !u!4 &1003793928
 Transform:
   m_ObjectHideFlags: 0

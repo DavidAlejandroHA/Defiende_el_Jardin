@@ -25,8 +25,9 @@ public class Proyectil : MonoBehaviour
             other.GetComponent<EnemigoIA>().takeDamage(_danio);
             //Debug.Log("A");
             Destroy(this.gameObject);
-        } else if (other.gameObject.tag != "Gnomo" && other.gameObject.tag != "PiezaCuerpo" && other.gameObject.tag != "Proyectil"
-            && other.gameObject.tag != "Huerta")
+        }
+        else if (other.gameObject.tag != "Gnomo" && other.gameObject.tag != "PiezaCuerpo" && other.gameObject.tag != "Proyectil"
+          && other.gameObject.tag != "Huerta" && other.gameObject.tag != "EspacioCamara")
             // Si no es un gnomo o un proyectil con lo que ha chocado entonces se destruye el proyectil
         {
             Destroy(this.gameObject);

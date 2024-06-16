@@ -133,7 +133,12 @@ public class EnemigoIA : EntidadesIA
             //Importante: hay que tener en cuenta que si el destino está fuera de la zona del navmesh
             // el agente no funcionará correctamente y se parará por el camino sin desaparecer
             newPos = new Vector3(newPos.x, destino.position.y ,newPos.z);
-            
+
+            NavMeshHit hitNavMesh;
+            if (NavMesh.SamplePosition(newPos, out hitNavMesh, Mathf.Infinity, NavMesh.AllAreas))
+            {
+                newPos = hitNavMesh.position;
+            }
             agente.SetDestination(newPos);
 
         }

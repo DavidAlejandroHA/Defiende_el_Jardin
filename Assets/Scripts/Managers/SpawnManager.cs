@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class SpawnManager : MonoBehaviour
 {
@@ -20,6 +21,8 @@ public class SpawnManager : MonoBehaviour
     public float radio;
     float max_radio;
     float centro;
+
+    //int mascaraSuelo = 1 << 7;
     // Start is called before the first frame update
 
     //Vector3 posCentroMundo = new Vector3(0f, 0.5f, 0f);
@@ -66,13 +69,33 @@ public class SpawnManager : MonoBehaviour
 
             /* GameObject nuevoEnemigo = Instantiate(enemigo, posCentroMundo - new Vector3(radio / 2, 0f, radio / 2)
              + new Vector3(Random.value * radio, 0f, Random.value * radio), Quaternion.identity);*/
+            NavMeshHit hitNavMesh;
+            Vector3 posSpawn;
+            if (NavMesh.SamplePosition(puntoAleatorioEnAnillo(posCentroMundo, distanciaMinimaSpawn, radio),
+                out hitNavMesh, Mathf.Infinity, NavMesh.AllAreas))
+            {
+                posSpawn = hitNavMesh.position;
 
-            GameObject nuevoEnemigo = Instantiate(enemigo,
-                puntoAleatorioEnAnillo(posCentroMundo, distanciaMinimaSpawn, radio)
-                , Quaternion.identity);
+                GameObject nuevoEnemigo = Instantiate(enemigo, posSpawn, Quaternion.identity);
+                /*NavMeshTriangulation triangulacion = NavMesh.CalculateTriangulation();
 
-            nuevoEnemigo.transform.LookAt(posCentroMundo);
-            nuevoEnemigo.SetActive(true);
+                int vertexIndex = Random.Range(Trian);*/
+                /*RaycastHit hit;
+                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.up), out hit, Mathf.Infinity, mascaraSuelo))
+                {
+                    nuevoEnemigo.GetComponent<NavMeshAgent>().Warp(hit.point);
+                }*/
+                /*NavMeshHit hit;
+                if (NavMesh.FindClosestEdge(nuevoEnemigo.transform.position, out hit, NavMesh.AllAreas))
+                {
+                    nuevoEnemigo.GetComponent<NavMeshAgent>().Warp(hit.position);
+                    //Debug.DrawRay(hit.position, Vector3.up, Color.red);
+                }*/
+
+                nuevoEnemigo.transform.LookAt(posCentroMundo);
+                nuevoEnemigo.SetActive(true);
+                
+            }
             if (cooldown > cooldownMinimoReducido)
             {
                 cooldown -= reducirCooldown;
