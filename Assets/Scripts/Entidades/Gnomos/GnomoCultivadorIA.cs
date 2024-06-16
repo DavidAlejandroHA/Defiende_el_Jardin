@@ -66,6 +66,7 @@ public class GnomoCultivadorIA : GnomoIA
             GameManager.Instance.aniadirPuntosComidaCompra(capacidadCosecha);
             capacidadCosecha = 0f;
             necesitaCultivar = true;
+            barraDeCosecha.setVida(capacidadCosecha);
             agente.destination = obtenerPosHuertaMasCercana().position;
         }
     }
