@@ -336,7 +336,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 218}
-  m_SizeDelta: {x: 404.4898, y: 166.8285}
+  m_SizeDelta: {x: 536.0208, y: 166.8285}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &648269895
 MonoBehaviour:
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Defiende la Granja
+  m_text: Seleccionar Mundo
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
   m_sharedMaterial: {fileID: -3015483672286125469, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
@@ -385,8 +385,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -513,6 +513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 790929416}
   - component: {fileID: 790929419}
+  - component: {fileID: 790929420}
   - component: {fileID: 790929418}
   - component: {fileID: 790929417}
   m_Layer: 5
@@ -567,7 +568,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.6666667, g: 1, b: 0.9372549, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.11372549, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 0.7019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -586,16 +587,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 1c8fa608f9a91d04ba8f2dd777c13e49, type: 3}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1003793927}
+        m_TargetAssemblyTypeName: GlobalUIManager, Assembly-CSharp
+        m_MethodName: cargarEscena
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Mundo2
           m_BoolArgument: 0
         m_CallState: 1
 --- !u!114 &790929418
@@ -618,7 +619,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8fa2b5878a341584abacde87687dd6ac, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bafec22db5e33694a9a9911991076eda, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -636,6 +637,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790929415}
   m_CullTransparentMesh: 1
+--- !u!114 &790929420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790929415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8dfc7e71b6385f489a32ce0724d2c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &802084779
 GameObject:
   m_ObjectHideFlags: 0

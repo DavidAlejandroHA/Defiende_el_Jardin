@@ -59,4 +59,9 @@ public class GlobalUIManager : MonoBehaviour
 
         SceneManager.LoadScene(nombre);
     }
+
+    public void cerrarAplicacion()
+    {
+        Application.Quit();
+    }
 }

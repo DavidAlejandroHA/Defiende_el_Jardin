@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 804723547997613801}
   - component: {fileID: 3608883072857342282}
   - component: {fileID: 7313064239922806286}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Granero
   m_TagString: Granero
   m_Icon: {fileID: 0}

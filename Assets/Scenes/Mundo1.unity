@@ -23,10 +23,10 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0.61
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 0d5771081eb9abb43b1792b52260d914, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0.411
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.3620996, g: 0.5734872, b: 0.6196515, a: 0.411}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -20309,8 +20309,8 @@ MonoBehaviour:
   cooldownMinimoReducido: 1
   reducirCooldown: 0.053
   enemigo: {fileID: 659002020}
-  distanciaMinimaSpawn: 180
-  radio: 200
+  distanciaMinimaSpawn: 220
+  radio: 240
   centroMundo: {fileID: 867104504}
 --- !u!114 &589049528
 MonoBehaviour:
@@ -22158,15 +22158,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2356616366068284842, guid: 76769cd40663b074c87b33fc8023a733, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2356616366068284842, guid: 76769cd40663b074c87b33fc8023a733, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2356616366068284842, guid: 76769cd40663b074c87b33fc8023a733, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5471324999099485233, guid: 76769cd40663b074c87b33fc8023a733, type: 3}
       propertyPath: m_LookAt
@@ -31094,7 +31094,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 45.1}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &874072127
 MonoBehaviour:
@@ -31172,8 +31172,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 31669189b8a944d41ba58c8f1474054f, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -45836,7 +45836,6 @@ GameObject:
   - component: {fileID: 1329043700}
   - component: {fileID: 1329043699}
   - component: {fileID: 1329043698}
-  - component: {fileID: 1329043701}
   m_Layer: 0
   m_Name: SalirMenuBotonPausa
   m_TagString: Untagged
@@ -45862,7 +45861,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -57.4}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1329043698
 MonoBehaviour:
@@ -45908,7 +45907,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1329043701}
+      - m_Target: {fileID: 589049531}
         m_TargetAssemblyTypeName: GlobalUIManager, Assembly-CSharp
         m_MethodName: cargarEscena
         m_Mode: 5
@@ -45940,8 +45939,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 31669189b8a944d41ba58c8f1474054f, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -45958,21 +45957,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1329043696}
   m_CullTransparentMesh: 1
---- !u!114 &1329043701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1329043696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad1857fa88fab0746bbda18f065368dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  botonPorDefecto: {fileID: 0}
-  playerInput: {fileID: 0}
-  seleccionarUIBotones: 0
 --- !u!1001 &1330173895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50643,15 +50627,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Salir al menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
+  m_sharedMaterial: {fileID: -3015483672286125469, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -65872,15 +65856,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: Renaudar
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
+  m_sharedMaterial: {fileID: -3015483672286125469, guid: 079d1fb40c225be4d9d128c3b68894aa, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

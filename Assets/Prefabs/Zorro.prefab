@@ -93,7 +93,7 @@ MonoBehaviour:
   animatorController: {fileID: 4958686038049676639}
   _destinoCompletado: 0
   distanciaAParar: 3
-  distanciaDespawn: 140
+  distanciaDespawn: 220
   itemComida: {fileID: 3932323609046712096}
 --- !u!195 &163841300521920822
 NavMeshAgent:
@@ -136,10 +136,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.4
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.2, z: 0}
 --- !u!1 &1041280784170539579
 GameObject:
   m_ObjectHideFlags: 0

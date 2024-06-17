@@ -135,6 +135,7 @@ public class GameManager : MonoBehaviour
             GameUIManager.Instance.textoEnemigosDerrotados.text = GameUIManager.Instance.textoEnemigosDerrotados.text
                 + enemigosMuertos;
             GameUIManager.Instance.panelGanar.SetActive(true);
+            PlayerPrefs.SetInt("DesbloqueoMundo2", 1);
             GameUIManager.Instance.tablonOpcionesGnomos.SetActive(false);
             UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(GlobalUIManager.Instance.botonPorDefecto);
         }
